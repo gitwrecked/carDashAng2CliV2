@@ -1,0 +1,71 @@
+
+  /*body{
+  	background: url(back.png);
+   -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    }*/
+  h1 {
+  	font-family: Papyrus, fantasy;
+  	font-size: 30px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: 300;
+  	/*line-height: 26.4px;*/
+  	font-weight: bold;
+  	text-align: center;
+  	color: black;
+  }
+/*    .body-before-bg {
+    	content: '';
+    	position: fixed;
+    	width: 100%;
+    	height: 100%;
+    	top: 0;
+    	left: 0;
+    	z-index: -1;
+    	background-image: url('../img/cover2.jpg');
+    	background-position: center right;
+    	background-size: cover;
+    	background-attachment: fixed;
+    	font-family: sans-serif;
+    }
+*/
+    #unhide{
+    	display: none;
+    }
+
+    #error{
+    	display: none;
+    }
+
+    .textFont{
+    	text-align: center;
+    	font-family: Papyrus, fantasy;
+    	color: black;
+    	font-size:30px;
+    	font-weight: bold;
+    }
+      .container {
+      padding: 20%;
+
+      }
+
+   @media screen and (orientation: portrait) {
+      .container {
+          margin-left: 10%;
+          margin-right: 10%;
+          margin-top: 15%;
+
+      }
+      h1 {
+  	font-family: Papyrus, fantasy;
+  	font-size: 40px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: bold;
+  	text-align: center;
+  	color: black;
+    }
+  }
