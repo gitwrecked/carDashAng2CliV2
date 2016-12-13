@@ -4,7 +4,7 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "nodemon src/server/server.js",
+    "start": "nodemon server/server.js",
     "watch": "ng build --watch",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",

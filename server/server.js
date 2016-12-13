@@ -18,8 +18,9 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-//point to client side index.html
-app.use(express.static(__dirname+ '/../../dist'));
+//point to client side dist/index.html
+// app.use(express.static(__dirname+ '/../client/dist'));
+app.use(express.static(path.join(__dirname, '/../client/dist')));
 
 mongoose.connect('mongodb://localhost/test');
 var db = mongoose.connection;
@@ -33,8 +34,9 @@ app.use('/cats', cats);
 
 // all other routes are handled by Angular
 app.get('/*', function (req, res) {
-console.log(__dirname);
-res.sendFile(__dirname + '../dist/index.html');
+console.log('logging dirname in app.get /* : '+__dirname);
+ res.sendFile(path.join(__dirname, '/../client/dist/index.html'));
+// res.sendFile(__dirname + '/client/dist/index.html');
 });
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
