@@ -1,12 +1,13 @@
 {
     "db": {
-        "url": "mongodb://localhost/test"
+        "url": "mongodb://gitwrecked:!234Abcd@ds155727.mlab.com:55727/gw-car-dashboard"
     }
     ,
-    // "server": {
-    //     "listenPort": 3001,
-    //     "securePort": 0,
-    //     "secret": "gitwrecked"
-    // }
+    "server": {
+        "listenPort": 3001,
+        "securePort": 0,
+        "secret": "gitwrecked"
+    }
 
 }
+
