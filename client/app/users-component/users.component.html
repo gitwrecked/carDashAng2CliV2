@@ -1,0 +1,14 @@
+<h2>
+  My Cats</h2>
+<ul class="users">
+<!--   <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedHero">
+    <span class="badge">{{user.id}}</span>
+    <span>{{user.name}}</span>
+    <button class="delete" (click)="delete(user); $event.stopPropagation()">x</button>
+  </li> -->
+
+    <li *ngFor="let user of users">
+        {{user.name}}
+      </li>
+
+</ul>

@@ -36,6 +36,7 @@ var api = express.Router();
 
 //retrieve all cats
 api.get('/get', function(req, res) {
+    console.log('inside cats/get server route');
     Cats.find(function(err, cats) {
         if (err) {
             console.error(err);
@@ -44,6 +45,7 @@ api.get('/get', function(req, res) {
                 msg: 'failed to retrieve all cats'
             });
         }
+        console.log('cats: '+cats);
         return res.json({
             success: true,
             cats: cats
