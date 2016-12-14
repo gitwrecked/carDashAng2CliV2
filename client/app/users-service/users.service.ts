@@ -16,7 +16,12 @@ export class UsersService {
     console.log(this.usersUrl);
     return this.http.get(this.usersUrl)
       .toPromise()
-      .then(response => response.json().data as User[])
+      .then(response => {
+        // console.log(response);
+        console.log("Users array in service");
+        console.log(response.json().cats);
+        response.json().cats as User[];
+      })
       .catch(this.handleError);
   }
 

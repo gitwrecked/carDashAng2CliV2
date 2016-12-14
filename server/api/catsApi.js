@@ -48,6 +48,7 @@ api.get('/get', function(req, res) {
         console.log('cats: '+cats);
         return res.json({
             success: true,
+            // kitten: res.body
             cats: cats
         });
     });
@@ -93,6 +94,8 @@ api.delete('/:cat_id', function(req, res) {
 api.post('/post', function(req, res) {
     var newCats = new Cats({
         name: req.body.name,
+        amount: req.body.amount,
+        desc:req.body.desc,
         cat: JSON.stringify(req.body)
     });
     // var fluffy = new Cats({ name: 'spike' });
