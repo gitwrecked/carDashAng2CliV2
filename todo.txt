@@ -68,14 +68,3 @@ ng build
 nodemon dist/app.js 
 [nodemon] starting `ng serve dist/app.js`
 
-
-
-
-
-
-
-
-externalized routes, url not working for extern routes. works fine for routes in server.js
-
-
-
