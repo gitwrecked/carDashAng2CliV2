@@ -27,7 +27,7 @@ export class UsersComponent {
   getUsers(): void {
     this.usersService.getUsers().then(
       users => {
-        console.log("this.users: "+this.users);
+        // console.log("this.users: "+this);
         this.users = users;
         console.log("Users array in component");
         console.log(users);

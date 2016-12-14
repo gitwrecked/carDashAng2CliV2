@@ -20,7 +20,8 @@ export class UsersService {
         // console.log(response);
         console.log("Users array in service");
         console.log(response.json().cats);
-        response.json().cats as User[];
+        return response.json().cats as User[];
+
       })
       .catch(this.handleError);
   }
