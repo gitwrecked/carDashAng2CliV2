@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var catSchema = mongoose.Schema({
     name: String,
-    weight: Number,
-    age: Number
+    amount: Number,
+    desc: String
 });
 
 var Cat = mongoose.model('Cat', catSchema);
