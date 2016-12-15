@@ -3,7 +3,13 @@
   "version": "0.0.0",
   "license": "MIT",
   "angular-cli": {},
+  "engines": {
+    "node": "6.9.1",
+    "npm": "3.10.8"
+  },
   "scripts": {
+    "heroku-prebuild": "npm install -g angular-cli",
+    "heroku-postbuild": "ng build",
     "start": "node server/server.js",
     "watch": "ng build --watch",
     "lint": "tslint \"src/**/*.ts\"",
