@@ -6,6 +6,7 @@ var Purchase = require('../models/purchase');
 var api = express.Router();
 
 api.get('/', function(req, res) {
+    console.log('entering get above use');
     Purchase.find(function(err, purchases) {
         if (err) {
             console.error(err);
@@ -21,7 +22,32 @@ api.get('/', function(req, res) {
     });
 });
 
+api.post('/post', function(req, res) {
+    console.log('entering purchase api 4 post');
+    var purchase = new Purchase({
+        user: req.body.user,
+        amount: req.body.amount,
+        description: req.body.description,
+        item: req.body.item
+    });
+
+    purchase.save(function(err) {
+        if (err) {
+            console.error(err);
+            return res.json({
+                msg: 'failed to add purchase...'
+            });
+        } else {
+            console.log('purchase added successfully!');
+            return res.json({
+                success: true,
+                msg: 'purchase added successfully!'
+            });
+        }
+    });
+});
 api.use(function(req, res, next) {
+    console.log('entering use');
     var token = req.headers.cd_token;
     if (token) {
         jwt.verify(token, config.server.secret, function(err, decoded) {
@@ -42,6 +68,7 @@ api.use(function(req, res, next) {
 });
 
 api.post('/', function(req, res) {
+    console.log('entering purchase api 4 post after USE');
     var purchase = new Purchase({
         user: req.body.user,
         amount: req.body.amount,
@@ -56,6 +83,7 @@ api.post('/', function(req, res) {
                 msg: 'failed to add purchase...'
             });
         } else {
+            console.log('purchase added successfully!');
             return res.json({
                 success: true,
                 msg: 'purchase added successfully!'

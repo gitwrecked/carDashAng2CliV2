@@ -1,12 +1,15 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user/user';
-import { Headers, Http } from '@angular/http';
+import { Purchase } from '../purchase/purchase';
+import { Headers, Http, RequestOptions } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UsersService {
   
   private usersUrl = 'cats/get';// URL to web api
+  private usersPost = 'cats/post';
+  private purchaseApi = '/api/v1/purchase/post'
 
   constructor(private http: Http) { }
 
@@ -24,29 +27,24 @@ export class UsersService {
 
       })
       .catch(this.handleError);
-  }
+  };
 
-  // getUseresSlowly(): Promise<User[]> {
-  //   return new Promise<User[]>(resolve =>
-  //     setTimeout(resolve, 2000)) // delay 2 seconds
-  //     .then(() => this.getUseres());
-  // }
-  // getUser(id: number): Promise<User> {
-  //   return this.getUseres()
-  //     .then(users => users.find(user => user.id === id));
-  // }
+  create(name: string, amount:number,description:string,item:string ): Promise<Purchase> {
+  console.log("inside userService method:addPurchase");
+  let headers = new Headers({ 'Content-Type': 'application/json' });
+  this.headers.append('cd_token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MTY4NTY0MywiZXhwIjoxNDgxNzcyMDQzfQ.8Xm1iUSCxJ8uzuUJMPL6o5nAC7KyUQDXCiU9AxBN4YM');
+  let options = new RequestOptions({ headers: headers });
+  console.log("url: "+this.purchaseApi);
+  return this.http
+     .post(this.purchaseApi, JSON.stringify({ user: name ,amount:amount ,description:description, item: item}), options)
+     .toPromise()
+     .then(res => res.json().data)
+     .catch(this.handleError);
+};
 
-  private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error); // for demo purposes only
-    return Promise.reject(error.message || error);
-  }
-  // create(name: string): Promise<User> {
-  //   return this.http
-  //     .post(this.usersUrl, JSON.stringify({ name: name }), { headers: this.headers })
-  //     .toPromise()
-  //     .then(res => res.json().data)
-  //     .catch(this.handleError);
-  // }
+
+
+
   // delete(id: number): Promise<void> {
   //   let url = `${this.usersUrl}/${id}`;
   //   return this.http.delete(url, { headers: this.headers })
@@ -61,6 +59,24 @@ export class UsersService {
   //     .toPromise()
   //     .then(() => user)
   //     .catch(this.handleError);
+  // }
+private handleError (error: Response | any) {
+  // In a real world app, we might use a remote logging infrastructure
+  let errMsg: string;
+  if (error instanceof Response) {
+    const body = error.json() || '';
+    const err = body.error || JSON.stringify(body);
+    errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
+  } else {
+    errMsg = error.message ? error.message : error.toString();
+  }
+  console.error(errMsg);
+  return Promise.reject(errMsg);
+}
+
+  // private handleError(error: any): Promise<any> {
+  //   console.error('An error occurred', error); // for demo purposes only
+  //   return Promise.reject(error.message || error);
   // }
 
 
