@@ -19,7 +19,7 @@ export class UsersComponent {
   constructor(private router: Router, private usersService: UsersService) { }
   ngOnInit(): void {
     this.getUsers();
-    this.getCats();
+    // this.getCats();
   }
    
   users: User[];
