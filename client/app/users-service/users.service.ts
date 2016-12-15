@@ -7,7 +7,8 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class UsersService {
   
-  private usersUrl = 'cats/get';// URL to web api
+  private catsUrl = 'cats/get';// URL to web api
+  private usersUrl = '/api/v1/purchase/';// URL to web api
   private usersPost = 'cats/post';
   private purchaseApi = '/api/v1/purchase/post'
 
@@ -20,8 +21,23 @@ export class UsersService {
     return this.http.get(this.usersUrl)
       .toPromise()
       .then(response => {
-        // console.log(response);
+        console.log(response);
         console.log("Users array in service");
+        console.log(response.json().purchases);
+        return response.json().purchases as User[];
+
+      })
+      .catch(this.handleError);
+  };
+
+
+   getCats(): Promise<User[]> {
+    console.log(this.usersUrl);
+    return this.http.get(this.catsUrl)
+      .toPromise()
+      .then(response => {
+        // console.log(response);
+        console.log("CATS array in service");
         console.log(response.json().cats);
         return response.json().cats as User[];
 
