@@ -92,6 +92,7 @@ api.delete('/:cat_id', function(req, res) {
 
 
 api.post('/post', function(req, res) {
+    console.log('inside cats post');
     var newCats = new Cats({
         name: req.body.name,
         amount: req.body.amount,
@@ -101,11 +102,12 @@ api.post('/post', function(req, res) {
     // var fluffy = new Cats({ name: 'spike' });
     newCats.save(function(err) {
         if (err) {
-            console.error(err);
+            console.error('err in posting: '+err);
             return res.json({
             msg: 'failed to upload cat...'
             });
         }
+        console.log('success in posting');
         return res.json({
             success: true,
             msg: 'cat upload successful',

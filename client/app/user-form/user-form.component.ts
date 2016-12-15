@@ -1,24 +1,53 @@
 import { Component } from '@angular/core';
 import { User }    from '../user/user';
+import { Purchase } from '../purchase/purchase';
+import { UsersService } from '../users-service/users.service';
+import { Router } from '@angular/router';
+
 @Component({
   // moduleId: module.id,
   selector: 'user-form',
-  templateUrl: 'user-form.component.html'
+  templateUrl: 'user-form2.component.html',
+  providers: [UsersService]
 })
 
-
-
 export class UserFormComponent {
-  title ='Enter User Amount Spending';
-  model = new User(18, 'Dr IQ', 20, 'test desc');
-  submitted = false;
-  onSubmit() { this.submitted = true; }
-  // TODO: Remove this when we're done
-    active = true;
-  newUser() {
-    this.model = new User(42, '', 0,'test desc');
-    this.active = false;
-    setTimeout(() => this.active = true, 0);
+    constructor(private router: Router, private usersService: UsersService) { }
+  ngOnInit(): void {
   }
-  get diagnostic() { return JSON.stringify(this.model); }
+
+  purchases: Purchase[];
+  users: User[];
+  model = new Purchase("",0,"","");
+
+create(name: string, amount:number,description:string,item:string): void {
+console.log('inside userForm - method:create');
+
+    name = name.trim();
+    if (!name) { return; }
+    this.usersService.create(name,amount,description,item)
+      .then(user => {
+        this.purchases.push(user);
+        // this.selectedHero = null;
+      });
+      this.clearForm();
+  };
+clearForm(): void {
+this.model = new Purchase("",0,"","");
+};
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
