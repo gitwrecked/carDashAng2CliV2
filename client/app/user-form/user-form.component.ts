@@ -14,25 +14,27 @@ import { Router } from '@angular/router';
 export class UserFormComponent {
     constructor(private router: Router, private usersService: UsersService) { }
   ngOnInit(): void {
-    // this.getUsers();
   }
 
   purchases: Purchase[];
   users: User[];
   model = new Purchase("",0,"","");
 
-    create(name: string, amount:number,description:string,item:string): void {
-    console.log('inside userForm - method:create');
-    console.log('name:'+ name);
+create(name: string, amount:number,description:string,item:string): void {
+console.log('inside userForm - method:create');
+
     name = name.trim();
     if (!name) { return; }
     this.usersService.create(name,amount,description,item)
       .then(user => {
-        this.purchases.push(hero);
+        this.purchases.push(user);
         // this.selectedHero = null;
       });
+      this.clearForm();
   };
-
+clearForm(): void {
+this.model = new Purchase("",0,"","");
+};
 }
 
 
