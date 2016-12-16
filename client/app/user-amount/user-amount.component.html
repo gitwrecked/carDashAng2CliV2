@@ -1,32 +1,5 @@
   <script src="node_modules/chart.js/src/chart.js"></script>
 
-   <h1>{{title}}</h1>
-    <ul class="users">
-      <li *ngFor="let user of users"
-        [class.selected]="user === selectedUser"
-        (click)="onSelect(user)">
-        <span class="badge">{{user.id}}</span> {{user.name}}
-        </li>
-    </ul>
-
-
-    <div *ngIf="selectedUser">
-      <h2>{{selectedUser.name}} details!</h2>
-      <div><label>id: </label>{{selectedUser.id}}</div>
-      <div>
-        <label>name: </label>
-        <input [(ngModel)]="selectedUser.name" placeholder="name"/>
-      </div>
-
-      <div><label>Amount: </label>{{selectedUser.amount}}</div>
-
-      <div>
-        <label>Description: </label>
-        <input [(ngModel)]="selectedUser.description" placeholder="name"/>
-      </div>
-        <!-- {{user.description}} -->
-
-    </div>
 <h2>Ownership by investments</h2>
 <div style="display: block">
   <canvas baseChart
