@@ -6,16 +6,16 @@ var Purchase = require('../models/purchase');
 var api = express.Router();
 
 api.get('/', function(req, res) {
-    console.log('entering get above use');
+    console.log('Entering get above use');
     Purchase.find(function(err, purchases) {
         if (err) {
             console.error(err);
-            return res.json({
+            return res.status(500).send({
                 success: false,
-                msg: 'failed to retrieve all purchases'
+                msg: 'Failed to retrieve all purchases'
             });
         }
-        return res.json({
+        return res.status(200).send({
             success: true,
             purchases: purchases
         });
@@ -23,7 +23,7 @@ api.get('/', function(req, res) {
 });
 
 api.post('/post', function(req, res) {
-    console.log('entering purchase api 4 post');
+    console.log('Entering purchase api 4 post');
     var purchase = new Purchase({
         user: req.body.user,
         amount: req.body.amount,
@@ -34,26 +34,26 @@ api.post('/post', function(req, res) {
     purchase.save(function(err) {
         if (err) {
             console.error(err);
-            return res.json({
-                msg: 'failed to add purchase...'
+            return res.status(500).send({
+                msg: 'Failed to add purchase'
             });
         } else {
-            console.log('purchase added successfully!');
-            return res.json({
+            console.log('Purchase added successfully');
+            return res.status(201).send({
                 success: true,
-                msg: 'purchase added successfully!'
+                msg: 'Purchase added successfully'
             });
         }
     });
 });
 api.use(function(req, res, next) {
-    console.log('entering use');
+    console.log('Entering use');
     var token = req.headers.cd_token;
     if (token) {
         jwt.verify(token, config.server.secret, function(err, decoded) {
             if (err) {
-                return res.json({
-                    msg: 'you must be logged in to perform this function...'
+                return res.status(401).send({
+                    msg: 'You must be logged in to perform this function...'
                 });
             } else {
                 req.decoded = decoded;
@@ -61,14 +61,14 @@ api.use(function(req, res, next) {
             }
         });
     } else {
-        return res.json({
-            msg: 'you must be logged in to perform this function...'
+        return res.status(401).send({
+            msg: 'You must be logged in to perform this function...'
         });
     }
 });
 
 api.post('/', function(req, res) {
-    console.log('entering purchase api 4 post after USE');
+    console.log('Entering purchase api 4 post after USE');
     var purchase = new Purchase({
         user: req.body.user,
         amount: req.body.amount,
@@ -79,14 +79,14 @@ api.post('/', function(req, res) {
     purchase.save(function(err) {
         if (err) {
             console.error(err);
-            return res.json({
-                msg: 'failed to add purchase...'
+            return res.status(500).send({
+                msg: 'Failed to add purchase...'
             });
         } else {
-            console.log('purchase added successfully!');
-            return res.json({
+            console.log('Purchase added successfully!');
+            return res.status(201).send({
                 success: true,
-                msg: 'purchase added successfully!'
+                msg: 'Purchase added successfully!'
             });
         }
     });
@@ -96,12 +96,12 @@ api.get('/:purchase_id', function(req, res) {
     Purchase.findById(req.params.purchase_id, function(err, purchase) {
         if (err) {
             console.error(err);
-            return res.json({
+            return res.status(500).send({
                 success: false,
-                msg: 'failed to retrieve purchase'
+                msg: 'Failed to retrieve purchase'
             });
         }
-        return res.json({
+        return res.status(200).send({
             success: true,
             purchase: purchase
         });
@@ -112,12 +112,12 @@ api.get('/user/:user', function(req, res) {
     Purchase.find(req.params.user, function(err, purchases) {
         if (err) {
             console.error(err);
-            return res.json({
+            return res.status(500).send({
                 success: false,
-                msg: 'failed to retrieve purchases'
+                msg: 'Failed to retrieve purchases'
             });
         }
-        return res.json({
+        return res.status(200).send({
             success: true,
             purchases: purchases
         });
@@ -130,14 +130,14 @@ api.delete('/:purchase_id', function(req, res) {
     }, function(err, purchase) {
         if (err) {
             console.error(err);
-            return res.json({
+            return res.status(500).send({
                 success: false,
-                msg: 'unable to delete purchase'
+                msg: 'Unable to delete purchase'
             });
         } else {
-            return res.json({
+            return res.status(200).send({
                 success: true,
-                msg: 'successfully deleted purchase'
+                msg: 'Successfully deleted purchase'
             });
         }
     });

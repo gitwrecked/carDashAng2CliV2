@@ -12,20 +12,19 @@ api.post('/register', function(req, res) {
         password: req.body.password
     });
     newUser.save(function(err) {
-        if (err) {
-            console.error(err);
-            return res.json({
-                msg: 'email already in use...'
+        if (err) {            
+            return res.status(400).send({
+                msg: 'A user with that email already exists'
             });
         }
         var token = jwt.sign({
             user: newUser.email
         }, config.server.secret, { 
-            expiresIn: 86400
+            expiresIn: config.server.tokenExpires
         });
-        return res.json({
+        return res.status(201).send({
             success: true,
-            msg: 'registered user!',
+            msg: 'Registered user successfully',
             token: token,
             email: newUser.email
         });
@@ -37,31 +36,30 @@ api.post('/login', function(req, res) {
             email: req.body.email
         },
         function(err, user) {
-            if (err) {
-                console.error(err);
-                return res.json({
-                    msg: 'error on login...'
+            if (err) {                
+                return res.status(500).send({
+                    msg: 'There was an error on login'
                 });
             }
             if (!user || !user.email || !user.password) {
-                return res.json({
-                    msg: 'check your email/password...'
+                return res.status(400).send({
+                    msg: 'The email or password do not match'
                 });
             }
             if (!bcrypt.compareSync(req.body.password, user.password)) {
-                return res.json({
-                    msg: 'check your email/password...'
+                return res.status(200).send({
+                    msg: 'The email or password do not match'
                 });
             }
 
             var token = jwt.sign({
                 user: user.email
             }, config.server.secret, { 
-                expiresIn: 86400
+                expiresIn: config.server.tokenExpires
             });
-            return res.json({
+            return res.status(200).send({
                 success: true,
-                msg: 'logged in ' + user.email + '!',
+                msg: 'Logged in user successfully',
                 token: token,
                 email: user.email,
                 admin: user.admin
