@@ -9,7 +9,7 @@ import { Purchase } from '../purchase/purchase';
 @Component({
 
   templateUrl: 'user-investment.html',
-  // styleUrls: ['user-investment.css'],
+  styleUrls: ['user-investment.css'],
   //service reqs
   providers: [UsersService]
 
