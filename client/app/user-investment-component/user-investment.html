@@ -1,0 +1,28 @@
+  <script src="node_modules/chart.js/src/chart.js"></script>
+
+<!-- <h2> users purchases </h2>
+<ul class="emails">
+    <li *ngFor="let user of emailList">
+    {{user}}
+    <br>
+    </li>
+
+</ul>
+
+<h2> amount </h2>
+<ul class="emails">
+    <li *ngFor="let user of amtArry">
+    {{user}}
+    <br>
+    </li>
+
+</ul> -->
+<h2>Ownership by investments</h2>
+<div style="display: block">
+  <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+</div>

@@ -4,6 +4,7 @@ import { User } from '../user/user';
 import { UsersService } from '../users-service/users.service';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Purchase } from '../purchase/purchase';
 
 @Component({
   // selector: 'my-users',
@@ -18,13 +19,12 @@ export class PurchaseHistoryComponent {
   //service reqs
   constructor(private router: Router, private usersService: UsersService) { }
   ngOnInit(): void {
-    this.getUsers();
-    // this.getCats();
+    this.getPurchases();
   }
    
   users: User[];
   cats: User[];
-  selectedUser: User;
+  purchases: Purchase[];
 
   getCats(): void {
     this.usersService.getCats().then(
@@ -36,11 +36,11 @@ export class PurchaseHistoryComponent {
       );
   }
 
-  getUsers(): void {
-    this.usersService.getUsers().then(
+  getPurchases(): void {
+    this.usersService.getPurchases().then(
       users => {
         // console.log("this.users: "+this);
-        this.users = users;
+        this.purchases = users;
         console.log("Users array in component");
         console.log(users);
       }
