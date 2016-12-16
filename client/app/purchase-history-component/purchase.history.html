@@ -1,0 +1,18 @@
+<h2 id ="center">User Purchases</h2>
+<ul class="users">
+<!--   <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedHero">
+    <span class="badge">{{user.id}}</span>
+    <span>{{user.name}}</span>
+    <button class="delete" (click)="delete(user); $event.stopPropagation()">x</button>
+  </li> -->
+
+    <li *ngFor="let user of users">
+    <h4>USER: </h4> {{user.user}}
+    <h4>AMOUNT: </h4>  {{user.amount}}
+    <h4>ITEM:  </h4> {{user.item}} 
+    <h4>DESC:  </h4> {{user.description}}
+    <br>
+    </li>
+
+</ul>
+
