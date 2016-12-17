@@ -80,6 +80,7 @@ export class UsersService {
   //     .then(() => null)
   //     .catch(this.handleError);
   // }
+  
   //   update(user: User): Promise<User> {
   //   const url = `${this.usersUrl}/${user.id}`;
   //   return this.http

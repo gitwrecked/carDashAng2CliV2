@@ -1,4 +1,9 @@
-#center{
+#centerDiv{
 	/*text-align: center;*/
-	margin-left: 2%;
+	/*margin-left: 2%;*/
+	padding-left: 5%;
+	padding-right: 5%;
+}
+#centerHeading{
+text-align: center;
 }

@@ -7,7 +7,8 @@ import { Router } from '@angular/router';
 @Component({
   // moduleId: module.id,
   selector: 'user-form',
-  templateUrl: 'user-form2.component.html',
+  templateUrl: 'user-form.component.html',
+  styleUrls: ['user-form.component.css'],
   providers: [UsersService]
 })
 

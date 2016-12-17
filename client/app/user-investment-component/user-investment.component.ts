@@ -6,10 +6,12 @@ import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Purchase } from '../purchase/purchase';
 
+
 @Component({
 
   templateUrl: 'user-investment.html',
   styleUrls: ['user-investment.css'],
+  // styles: [require('app.component.css')],
   //service reqs
   providers: [UsersService]
 

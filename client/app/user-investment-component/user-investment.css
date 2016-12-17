@@ -1,11 +1,13 @@
 
-.bg{
- /*position: absolute;*/
-/*  top: 0;
-  bottom: 0;*/
-  width: 75%;
+/*.bg{
+  top: 0;
+  bottom: 0;
+width: 75%;
 }
+*/
 
-#center{
+#centerHeading{
 	text-align: center;
 }
+
+/*@import 'app.component.css';*/

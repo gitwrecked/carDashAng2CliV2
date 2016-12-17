@@ -1,8 +1,9 @@
-  <!-- {{diagnostic}} -->
+  <h2 id="centerHeading">User Spending </h2>
   <div class="container">
-    <div  [hidden]="submitted">
-      <h1>{{title}}</h1>
-      <form *ngIf="active" (ngSubmit)="onSubmit()" #userForm="ngForm">
+ 
+  <br>
+    <div  >
+      <form #userForm="ngForm">
         <div class="form-group">
           <label for="name">Name</label>
           <input type="text" class="form-control" id="name"
@@ -21,31 +22,17 @@
         </div>
 
         <div class="form-group">
+          <label for="item">Item</label>
+          <input type="text" class="form-control" id="item"
+                 [(ngModel)]="model.item" name="item" >
+        </div>
+
+        <div class="form-group">
           <label for="description">Description</label>
           <input type="text" class="form-control" id="description"
                  [(ngModel)]="model.description" name="description" >
         </div>
 
-<button type="submit" class="btn btn-default" [disabled]="!userForm.form.valid">Submit</button>
-        <button type="button" class="btn btn-default" (click)="newUser()">New User Entry</button>
+        <button type="button" class="btn btn-default" (click)="create(model.name,model.amount,model.description,model.item)"> post</button>
       </form>
     </div>
-    <div [hidden]="!submitted">
-      <h2>You submitted the following:</h2>
-      <div class="row">
-        <div class="col-xs-3">Name</div>
-        <div class="col-xs-9  pull-left">{{ model.name }}</div>
-      </div>
-      <div class="row">
-        <div class="col-xs-3">Amount</div>
-        <div class="col-xs-9 pull-left">{{ model.amount }}</div>
-      </div>
-      <br>
-            <div class="row">
-        <div class="col-xs-3">Description</div>
-        <div class="col-xs-9 pull-left">{{ model.description }}</div>
-      </div>
-      <br>
-      <button class="btn btn-default" (click)="submitted=false">Edit</button>
-    </div>
-  </div>
