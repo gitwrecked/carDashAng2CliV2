@@ -26,7 +26,7 @@ api.post('/register', function(req, res) {
         return res.json({
             success: true,
             msg: 'registered user!',
-            token: token,
+            cd_token: token,
             email: newUser.email
         });
     });
@@ -62,7 +62,7 @@ api.post('/login', function(req, res) {
             return res.json({
                 success: true,
                 msg: 'logged in ' + user.email + '!',
-                token: token,
+                cd_token: token,
                 email: user.email,
                 admin: user.admin
             });

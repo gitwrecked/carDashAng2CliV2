@@ -1,0 +1,8 @@
+.users-purchases {
+	max-width: 30em;
+	margin: auto;
+}
+
+.users-purchases>h2 {
+	text-align: center;
+}
