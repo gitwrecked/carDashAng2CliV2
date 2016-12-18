@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { User }    from '../user/user';
-
 // let template = require('./doughnut-chart-demo.html');
 
 const USERS: User[] = [
@@ -26,7 +25,7 @@ const USERS: User[] = [
 
 
 
-export class UserAmountComponent {
+export class UserAmountComponent{
   users = USERS;
   title = 'User Account Info';
   selectedUser: User;

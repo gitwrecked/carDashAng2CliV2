@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { User } from '../user/user';
 import { Purchase } from '../purchase/purchase';
-import { Headers, Http, RequestOptions } from '@angular/http';
+import { Http, RequestOptions } from '@angular/http';
+import { headers } from '../common/headers';
 import 'rxjs/add/operator/toPromise';
 
 @Injectable()
@@ -11,10 +12,7 @@ export class UsersService {
   private usersUrl = '/api/v1/purchase/';// URL to web api
   private usersPost = 'cats/post';
   private purchaseApi = '/api/v1/purchase/post'
-
   constructor(private http: Http) { }
-
-  private headers = new Headers({ 'Content-Type': 'application/json' });
 
   getUsers(): Promise<User[]> {
     console.log(this.usersUrl);
@@ -46,50 +44,29 @@ export class UsersService {
   };
 
   create(name: string, amount:number,description:string,item:string ): Promise<Purchase> {
-  console.log("inside userService method:addPurchase");
-  let headers = new Headers({ 'Content-Type': 'application/json' });
-  this.headers.append('cd_token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MTY4NTY0MywiZXhwIjoxNDgxNzcyMDQzfQ.8Xm1iUSCxJ8uzuUJMPL6o5nAC7KyUQDXCiU9AxBN4YM');
-  let options = new RequestOptions({ headers: headers });
-  console.log("url: "+this.purchaseApi);
-  return this.http
-     .post(this.purchaseApi, JSON.stringify({ user: name ,amount:amount ,description:description, item: item}), options)
-     .toPromise()
-     .then(res => res.json().data)
-     .catch(this.handleError);
-};
+    console.log("inside userService method:addPurchase");
+    let options = new RequestOptions({ headers: headers });
+    console.log("url: "+this.purchaseApi);
+    return this.http
+       .post(this.purchaseApi, JSON.stringify({ user: name ,amount:amount ,description:description, item: item}), options)
+       .toPromise()
+       .then(res => res.json().data)
+       .catch(this.handleError);
+  };
 
+  isLoggedIn():Boolean {
+    return localStorage.getItem('cd_token')? true : false;
+  }
 
+  login(username: string, password: string): void {
+    console.info('extract login http call from login component to this method');    
+  };
 
-
-  // delete(id: number): Promise<void> {
-  //   let url = `${this.usersUrl}/${id}`;
-  //   return this.http.delete(url, { headers: this.headers })
-  //     .toPromise()
-  //     .then(() => null)
-  //     .catch(this.handleError);
-  // }
-  //   update(user: User): Promise<User> {
-  //   const url = `${this.usersUrl}/${user.id}`;
-  //   return this.http
-  //     .put(url, JSON.stringify(user), { headers: this.headers })
-  //     .toPromise()
-  //     .then(() => user)
-  //     .catch(this.handleError);
-  // }
-  
-// private handleError (error: Response | any) {
-//   // In a real world app, we might use a remote logging infrastructure
-//   let errMsg: string;
-//   if (error instanceof Response) {
-//     const body = error.json() || '';
-//     const err = body.error || JSON.stringify(body);
-//     errMsg = `${error.status} - ${error.statusText || ''} ${err}`;
-//   } else {
-//     errMsg = error.message ? error.message : error.toString();
-//   }
-//   console.error(errMsg);
-//   return Promise.reject(errMsg);
-// }
+  logout(): void {
+    localStorage.removeItem('cd_token');
+    // reloading window until service is changed to observable
+    window.location.reload();
+  };
 
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only
