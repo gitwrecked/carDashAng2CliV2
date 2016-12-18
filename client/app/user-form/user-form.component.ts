@@ -12,10 +12,13 @@ import { Router } from '@angular/router';
 })
 
 export class UserFormComponent {
-    constructor(private router: Router, private usersService: UsersService) { }
+    constructor(private router: Router, private usersService: UsersService) { 
+      this.isLoading = false;
+    }
   ngOnInit(): void {
+    this.getUsers();
   }
-
+  private isLoading;
   purchases: Purchase[];
   users: User[];
   model = new Purchase("",null,"","");
@@ -50,6 +53,21 @@ console.log((user+' : '+amount+' : '+description+' : '+item));
 clearForm(): void {
 this.model = new Purchase("",0,"","");
 };
+    getUsers(): void {
+    this.usersService.getUsers().then(
+      user => {
+        this.users = user;
+        console.log("users in component");
+        console.log(this.users);
+        this.isLoading = true;
+
+      }
+      // data => doWork('text', data)
+      ).catch(function(e) {
+        console.log('Inside getUsers Exception'); 
+      console.log(e); 
+  });
+  }
 }
 
 

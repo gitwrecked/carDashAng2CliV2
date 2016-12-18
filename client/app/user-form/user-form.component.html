@@ -8,10 +8,16 @@
           <label for="name">User Email</label>
 
           
-          <input type="text" class="form-control" id="user"
+<!--           <input type="text" class="form-control" id="user"
                  required
                  [(ngModel)]="model.user" name="user"
-                 #user="ngModel">
+                 #user="ngModel"> -->
+
+  <select class="form-control"  id="user"
+          required
+          [(ngModel)]="model.user" name="user" #user="ngModel">
+    <option *ngFor="let user of users" [value]="user.email">{{user.email}}</option>
+  </select>
 <!--           <div [hidden]="user.valid || user.pristine" 
                class="alert alert-danger">
             User is required
