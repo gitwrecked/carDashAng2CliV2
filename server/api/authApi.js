@@ -24,8 +24,10 @@ api.post('/register', function(req, res) {
         });
         return res.status(201).send({
             success: true,
+
             msg: 'Registered user successfully',
             token: token,
+
             email: newUser.email
         });
     });
@@ -61,6 +63,7 @@ api.post('/login', function(req, res) {
                 success: true,
                 msg: 'Logged in user successfully',
                 token: token,
+
                 email: user.email,
                 admin: user.admin
             });

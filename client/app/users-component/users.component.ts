@@ -5,11 +5,13 @@ import { UsersService } from '../users-service/users.service';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+const styles   = require('./users.component.css');
+const template = require('./users.component.html');
+
 @Component({
   selector: 'my-users',
-  templateUrl: 'users.component.html',
-  // styleUrls: ['app/users/useres.component.css'],
-  //service reqs
+  templateUrl: template,
+  styles: [styles],
   providers: [UsersService]
 
 })

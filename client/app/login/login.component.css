@@ -1,0 +1,16 @@
+.login {
+  max-width: 30em;
+}
+
+.login>h1 {
+	text-align: center;
+}
+
+.login>form {
+	padding: 1em;
+}
+
+.login>form>.login-msg {
+	color: red;
+	text-align: center;
+}
