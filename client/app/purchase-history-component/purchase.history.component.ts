@@ -7,44 +7,35 @@ import { Router } from '@angular/router';
 import { Purchase } from '../purchase/purchase';
 
 @Component({
-  // selector: 'my-users',
   templateUrl: 'purchase.history.html',
   styleUrls: ['purchase.history.css'],
-  //service reqs
   providers: [UsersService]
 
 })
 
 export class PurchaseHistoryComponent {
-  //service reqs
   constructor(private router: Router, private usersService: UsersService) { }
   ngOnInit(): void {
     this.getPurchases();
   }
-   
+  public arrayOfKeys;
+
   users: User[];
-  cats: User[];
   purchases: Purchase[];
 
-  getCats(): void {
-    this.usersService.getCats().then(
-      users => {
-        this.cats = users;
-        console.log("Cats array in component");
-        console.log(users);
-      }
-      );
-  }
-
   getPurchases(): void {
-    this.usersService.getPurchases().then(
+    this.usersService.getUsers().then(
       users => {
         // console.log("this.users: "+this);
-        this.purchases = users;
+        this.users = users;
+
         console.log("Users array in component");
         console.log(users);
       }
-      );
+      ).catch(function(e) {
+        console.log('Inside getPurchases / getUsers Exception'); 
+      console.log(e); 
+  });
   }
 
 // onSelect(user: User): void {

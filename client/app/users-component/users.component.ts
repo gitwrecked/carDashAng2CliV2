@@ -18,34 +18,23 @@ export class UsersComponent {
   //service reqs
   constructor(private router: Router, private usersService: UsersService) { }
   ngOnInit(): void {
-    this.getUsers();
+    // this.getUsers();
     // this.getCats();
   }
    
   users: User[];
-  cats: User[];
   selectedUser: User;
 
-  getCats(): void {
-    this.usersService.getCats().then(
-      users => {
-        this.cats = users;
-        console.log("Cats array in component");
-        console.log(users);
-      }
-      );
-  }
-
-  getUsers(): void {
-    this.usersService.getUsers().then(
-      users => {
-        // console.log("this.users: "+this);
-        this.users = users;
-        console.log("Users array in component");
-        console.log(users);
-      }
-      );
-  }
+  // getUsers(): void {
+  //   this.usersService.getUsers().then(
+  //     users => {
+  //       // console.log("this.users: "+this);
+  //       this.users = users;
+  //       console.log("Users array in component");
+  //       console.log(users);
+  //     }
+  //     );
+  // }
 
 // onSelect(user: User): void {
 //   this.selectedUser = user;

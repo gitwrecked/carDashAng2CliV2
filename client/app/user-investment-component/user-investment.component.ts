@@ -11,8 +11,8 @@ import { Purchase } from '../purchase/purchase';
 
   templateUrl: 'user-investment.html',
   styleUrls: ['user-investment.css'],
+  //get global styling to work
   // styles: [require('app.component.css')],
-  //service reqs
   providers: [UsersService]
 
 })
@@ -26,23 +26,17 @@ export class UserInvestmentComponent{
   ngOnInit(): void {
   	this.getPurchases();
   	this.getUsers();
-  	
   }
 
   public purchases: Purchase[];
   public users:User[];
   public userEmails: type[];
-  public emailList: Array<string> = [];
-  public amtArry: Array<number> = [];
+  // public emailList: Array<string> = [];
+  // public amtArry: Array<number> = [];
   private isLoading;
-  // public doughnutChartLabels:string[] = this.emailList;
-  // public doughnutChartData:number[] = this.amtArry;
   public doughnutChartLabels:Array<string> =[];
-  //["Download Sales", 'In-Store Sales', 'Mail-Order Sales'];
   public doughnutChartData:number[] = [];
-  
   public doughnutChartType:string = 'doughnut';
-  // events
   public chartClicked(e:any):void {
     // console.log(e);
   }
@@ -50,28 +44,31 @@ export class UserInvestmentComponent{
     // console.log(e);
   }
 
- addUserEmail() {
+ pupulateChart() {
  	// console.log("inside add user email");
  	// console.log(user);
- 	var arrayLength = this.purchases.length;
- 	// console.log(arrayLength);
+ 	var arrayLength = this.users.length;
+   console.log("arrayLength");
+ 	console.log(arrayLength);
 	for (var i = 0; i < arrayLength; i++) {
-		// console.log(this.users[i].email);
-    	this.doughnutChartLabels.push(this.purchases[i].user);
-    	this.doughnutChartData.push(this.purchases[i].amount);
+    	this.doughnutChartLabels.push(this.users[i].email);
+      console.log("this.users[i]"+ this.users[i].email +" length: "+this.users[i].purchases.length);
+      console.log();
+      var amt = 0;
+      for (var t = 0; t < this.users[i].purchases.length; t++) {
+        amt = amt + this.users[i].purchases[t].amount;
+        console.log("amt: "+amt);
+      }
+      this.doughnutChartData.push(amt);
 		}
-		// console.log("emailList");
-		// console.log(this.doughnutChartLabels);
-		// console.log("amtArry");
-		// console.log(this.doughnutChartData);
 }
 
   getPurchases(): void {
     this.usersService.getPurchases().then(
       purchase => {
         this.purchases = purchase;
-        this.addUserEmail();
-        this.isLoading = true;
+        console.log("purchases");
+        console.log(this.purchases);
       }
       ).catch(function(e) {
       	console.log('Inside getPurchase Exception'); 
@@ -83,8 +80,11 @@ export class UserInvestmentComponent{
     this.usersService.getUsers().then(
       user => {
         this.users = user;
-        console.log("user in component");
-        console.log(user);
+        console.log("users in component");
+        console.log(this.users);
+        this.pupulateChart();
+        this.isLoading = true;
+
       }
       // data => doWork('text', data)
       ).catch(function(e) {
@@ -100,7 +100,6 @@ export interface type{
 export interface amount{
 	amt: number;
 }
-
 
 
 

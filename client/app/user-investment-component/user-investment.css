@@ -10,4 +10,6 @@ width: 75%;
 	text-align: center;
 }
 
-/*@import 'app.component.css';*/
+/*
+get global css to work
+@import 'app.component.css';*/

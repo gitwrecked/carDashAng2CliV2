@@ -5,15 +5,17 @@
     <div  >
       <form #userForm="ngForm">
         <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" class="form-control" id="name"
+          <label for="name">User Email</label>
+
+          
+          <input type="text" class="form-control" id="user"
                  required
-                 [(ngModel)]="model.name" name="name"
-                 #name="ngModel" >
-          <div [hidden]="name.valid || name.pristine" 
+                 [(ngModel)]="model.user" name="user"
+                 #user="ngModel">
+<!--           <div [hidden]="user.valid || user.pristine" 
                class="alert alert-danger">
-            Name is required
-          </div>
+            User is required
+          </div> -->
         </div>
         <div class="form-group">
           <label for="amount">Amount</label>
@@ -33,6 +35,6 @@
                  [(ngModel)]="model.description" name="description" >
         </div>
 
-        <button type="button" class="btn btn-default" (click)="create(model.name,model.amount,model.description,model.item)"> post</button>
+        <button type="button" class="btn btn-default" (click)="addUserPurchase(model.user,model.amount,model.description,model.item)"> post</button>
       </form>
     </div>

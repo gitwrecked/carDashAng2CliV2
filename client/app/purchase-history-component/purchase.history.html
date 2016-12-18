@@ -1,24 +1,42 @@
 <h2 id ="centerHeading">User Purchases</h2>
 <div id ="centerDiv">
-  
+ 
 <table class="table table-striped">
  <thead>
       <tr>
-        <th>User</th>
         <th>Amount</th>
         <th>Item</th>
         <th>Desc</th>
       </tr>
-    </thead>
+</thead><tbody></tbody></table>
+
+<div *ngFor="let user of users" > 
+<!-- {{user.purchases.length}} -->
+<div *ngIf="user.purchases.length > 0">
+  
+<h4>{{user.email}}</h4>
+<br>
+<table class="table table-striped">
      <tbody>
-
-    <tr *ngFor="let purchase of purchases">
-        <td>{{purchase.user}}</td>
-        <td>{{purchase.amount}}</td>
-        <td>{{purchase.item}} </td>
-        <td> {{purchase.description}} </td>
+      <tr *ngFor="let purchase of user.purchases">
+              <td>{{purchase.amount}}</td>
+              <td>{{purchase.item}}</td>
+              <td>{{purchase.description}}</td>
       </tr>
-
-      </tbody>
+  </tbody>
 </table>
+ </div>
+<!-- <ul>
+  <li *ngFor="let user of users">
+    {{user.email}}
+    <ul>
+      <li *ngFor="let purchase of user.purchases">
+        {{purchase.amount}}
+        {{purchase.item}}
+        {{purchase.description}}
+      </li>
+    </ul>
+  </li>
+</ul> -->
 </div>
+

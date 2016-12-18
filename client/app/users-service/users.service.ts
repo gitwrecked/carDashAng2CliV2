@@ -10,6 +10,7 @@ export class UsersService {
   private catsUrl = 'cats/get';// URL to web api
   private purchasesUrl = '/api/v1/purchase/';// URL to web api
   private usersUrl = '/api/v1/user/get';
+  private usersPurchaseUrl = '/api/v1/user/post';
   private usersPost = 'cats/post';
   private purchaseApi = '/api/v1/purchase/post'
 
@@ -73,6 +74,21 @@ export class UsersService {
      .catch(this.handleError);
 };
 
+  addUserPurchase(email: string, purchase:Purchase ): Promise<Purchase> {
+  console.log("----inside userService method:addUserPurchase");
+  console.log(email);
+  console.log(purchase);
+  let headers = new Headers({ 'Content-Type': 'application/json' });
+  this.headers.append('cd_token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MTY4NTY0MywiZXhwIjoxNDgxNzcyMDQzfQ.8Xm1iUSCxJ8uzuUJMPL6o5nAC7KyUQDXCiU9AxBN4YM');
+  let options = new RequestOptions({ headers: headers });
+  // console.log("url: "+this.purchaseApi);
+  return this.http
+     .post(this.usersPurchaseUrl, JSON.stringify({ email: email ,purchase:purchase}), options)
+     .toPromise()
+     .then(res => res.json().data)
+     .catch(this.handleError);
+};
+
   // delete(id: number): Promise<void> {
   //   let url = `${this.usersUrl}/${id}`;
   //   return this.http.delete(url, { headers: this.headers })
@@ -111,3 +127,10 @@ export class UsersService {
 
 
 }
+
+// export interface usersapi{
+//     email:string;
+//     // password:string;
+//     // admin:boolean;
+//     purchases:Purchase[];
+// }
