@@ -1,0 +1,15 @@
+
+/*.bg{
+  top: 0;
+  bottom: 0;
+width: 75%;
+}
+*/
+
+#centerHeading{
+	text-align: center;
+}
+
+/*
+get global css to work
+@import 'app.component.css';*/

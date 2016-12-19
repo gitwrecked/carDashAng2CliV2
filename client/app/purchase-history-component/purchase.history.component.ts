@@ -4,39 +4,39 @@ import { User } from '../user/user';
 import { UsersService } from '../users-service/users.service';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
-const styles   = require('./users.component.css');
-const template = require('./users.component.html');
+import { Purchase } from '../purchase/purchase';
 
 @Component({
-  selector: 'my-users',
-  templateUrl: template,
-  styles: [styles],
+  templateUrl: 'purchase.history.html',
+  styleUrls: ['purchase.history.css'],
   providers: [UsersService]
 
 })
 
-export class UsersComponent {
-  //service reqs
+export class PurchaseHistoryComponent {
   constructor(private router: Router, private usersService: UsersService) { }
   ngOnInit(): void {
-    // this.getUsers();
-    // this.getCats();
+    this.getPurchases();
   }
-   
-  users: User[];
-  selectedUser: User;
+  public arrayOfKeys;
 
-  // getUsers(): void {
-  //   this.usersService.getUsers().then(
-  //     users => {
-  //       // console.log("this.users: "+this);
-  //       this.users = users;
-  //       console.log("Users array in component");
-  //       console.log(users);
-  //     }
-  //     );
-  // }
+  users: User[];
+  purchases: Purchase[];
+
+  getPurchases(): void {
+    this.usersService.getUsers().then(
+      users => {
+        // console.log("this.users: "+this);
+        this.users = users;
+
+        console.log("Users array in component");
+        console.log(users);
+      }
+      ).catch(function(e) {
+        console.log('Inside getPurchases / getUsers Exception'); 
+      console.log(e); 
+  });
+  }
 
 // onSelect(user: User): void {
 //   this.selectedUser = user;

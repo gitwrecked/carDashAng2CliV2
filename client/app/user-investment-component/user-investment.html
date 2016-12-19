@@ -1,0 +1,17 @@
+
+<script src="node_modules/chart.js/src/chart.js"></script>
+
+<h2 id ="centerHeading">Ownership by investments</h2>
+  <div class="bg" >  
+<div *ngIf = "isLoading">
+<div style="display: block" >
+  <canvas baseChart
+              [data]="doughnutChartData"
+              [labels]="doughnutChartLabels"
+              [chartType]="doughnutChartType"
+              (chartHover)="chartHovered($event)"
+              (chartClick)="chartClicked($event)"></canvas>
+</div>
+</div>
+
+</div>
