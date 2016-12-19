@@ -1,19 +1,23 @@
-<h2>
-  User Purchases</h2>
-<ul class="users">
-<!--   <li *ngFor="let user of users" (click)="onSelect(user)" [class.selected]="user === selectedHero">
-    <span class="badge">{{user.id}}</span>
-    <span>{{user.name}}</span>
-    <button class="delete" (click)="delete(user); $event.stopPropagation()">x</button>
-  </li> -->
+<div class="users-purchases">
+  <h2>User Purchases</h2>
+  <table class="table table-striped">
+   <thead>
+        <tr>
+          <th>User</th>
+          <th>Amount</th>
+          <th>Item</th>
+          <th>Desc</th>
+        </tr>
+      </thead>
+       <tbody>
 
-    <li *ngFor="let user of users">
-        {{user.user}}
-        {{user.amount}}
-        {{user.description}}
-        {{user.item}} 
+      <tr *ngFor="let purchase of users">
+          <td>{{purchase.user}}</td>
+          <td>{{purchase.amount}}</td>
+          <td>{{purchase.item}} </td>
+          <td> {{purchase.description}} </td>
+        </tr>
 
-     </li>
-
-</ul>
-
+        </tbody>
+  </table>
+</div>

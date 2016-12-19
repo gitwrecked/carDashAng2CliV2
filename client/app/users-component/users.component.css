@@ -1,4 +1,7 @@
 #center{
 	/*text-align: center;*/
 	margin-left: 2%;
+
+.users-purchases > h2 {
+	text-align: center;
 }

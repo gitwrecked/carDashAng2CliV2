@@ -1,6 +1,6 @@
 {
     "db": {
-        "url": "mongodb://gitwrecked:!234Abcd@ds155727.mlab.com:55727/gw-car-dashboard"
+        "url": "mongodb://localhost/test"
     }
     ,
     "server": {
@@ -10,4 +10,3 @@
     }
 
 }
-
