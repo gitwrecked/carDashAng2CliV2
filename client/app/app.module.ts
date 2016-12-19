@@ -44,6 +44,9 @@ import { AuthGuard }             from './common/auth.guard';
     path: 'usersInvestments',
     component: UserInvestmentComponent
   },
+    {path: 'login',
+    component: LoginComponent
+  },
   {
     path: '**',
     component: PurchaseHistoryComponent
