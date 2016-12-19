@@ -5,36 +5,69 @@ import { UsersService } from '../users-service/users.service';
 import { Router } from '@angular/router';
 
 @Component({
-  // moduleId: module.id,
   selector: 'user-form',
-  templateUrl: 'user-form2.component.html',
+  templateUrl: 'user-form.component.html',
+  styleUrls: ['user-form.component.css'],
   providers: [UsersService]
 })
 
 export class UserFormComponent {
-    constructor(private router: Router, private usersService: UsersService) { }
+    constructor(private router: Router, private usersService: UsersService) { 
+      this.isLoading = false;
+    }
   ngOnInit(): void {
+    this.getUsers();
   }
-
+  private isLoading;
   purchases: Purchase[];
   users: User[];
-  model = new Purchase("",0,"","");
+  model = new Purchase("",null,"","");
 
-create(name: string, amount:number,description:string,item:string): void {
+create(user: string , amount:number , description:string , item:string): void {
 console.log('inside userForm - method:create');
 
-    name = name.trim();
-    if (!name) { return; }
-    this.usersService.create(name,amount,description,item)
+    user = user.trim();
+    if (!user) { return; }
+    this.usersService.create(user,amount,description,item)
       .then(user => {
         this.purchases.push(user);
-        // this.selectedHero = null;
       });
       this.clearForm();
   };
+
+addUserPurchase(user: string , amount:number , description:string , item:string): void {
+console.log('inside userForm - method:addUserPurchase');
+console.log((user+' : '+amount+' : '+description+' : '+item));
+    var purchase = new Purchase(user,amount,description,item);
+    user = user.trim();
+    if (!user) { return; }
+    console.log("Sending PURCHASE from component to service: ");
+    console.log(purchase);
+    this.usersService.addUserPurchase(user,purchase)
+      .then(user => {
+        console.log("inside then for add purchase component?")
+      });
+      this.clearForm();
+  };
+
 clearForm(): void {
 this.model = new Purchase("",0,"","");
 };
+    getUsers(): void {
+    this.usersService.getUsers().then(
+      user => {
+        this.users = user;
+        console.log("users in component");
+        console.log(this.users);
+        this.isLoading = true;
+
+      }
+      // data => doWork('text', data)
+      ).catch(function(e) {
+        console.log('Inside getUsers Exception'); 
+      console.log(e); 
+  });
+  }
 }
 
 

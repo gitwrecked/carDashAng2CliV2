@@ -1,8 +1,7 @@
-.users-purchases {
-	max-width: 30em;
-	margin: auto;
-}
+#center{
+	/*text-align: center;*/
+	margin-left: 2%;
 
-.users-purchases>h2 {
+.users-purchases > h2 {
 	text-align: center;
 }
