@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { User } from '../user/user';
+import { User } from '../Models/user';
 //service reqs
 import { UsersService } from '../users-service/users.service';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Purchase } from '../purchase/purchase';
+import { Purchase } from '../Models/purchase';
 
 @Component({
   templateUrl: 'purchase.history.html',

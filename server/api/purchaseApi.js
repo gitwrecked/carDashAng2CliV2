@@ -5,47 +5,7 @@ var Purchase = require('../models/purchase');
 
 var api = express.Router();
 
-api.get('/', function(req, res) {
-    console.log('Entering get above use');
-    Purchase.find(function(err, purchases) {
-        if (err) {
-            console.error(err);
-            return res.status(500).send({
-                success: false,
-                msg: 'Failed to retrieve all purchases'
-            });
-        }
-        return res.status(200).send({
-            success: true,
-            purchases: purchases
-        });
-    });
-});
 
-api.post('/post', function(req, res) {
-    console.log('Entering purchase api 4 post');
-    var purchase = new Purchase({
-        user: req.body.user,
-        amount: req.body.amount,
-        description: req.body.description,
-        item: req.body.item
-    });
-
-    purchase.save(function(err) {
-        if (err) {
-            console.error(err);
-            return res.status(500).send({
-                msg: 'Failed to add purchase'
-            });
-        } else {
-            console.log('Purchase added successfully');
-            return res.status(201).send({
-                success: true,
-                msg: 'Purchase added successfully'
-            });
-        }
-    });
-});
 api.use(function(req, res, next) {
     console.log('Entering use');
     var token = req.headers.cd_token;
@@ -142,5 +102,46 @@ api.delete('/:purchase_id', function(req, res) {
         }
     });
 });
-
 module.exports = api;
+// api.get('/', function(req, res) {
+//     console.log('Entering get above use');
+//     Purchase.find(function(err, purchases) {
+//         if (err) {
+//             console.error(err);
+//             return res.status(500).send({
+//                 success: false,
+//                 msg: 'Failed to retrieve all purchases'
+//             });
+//         }
+//         return res.status(200).send({
+//             success: true,
+//             purchases: purchases
+//         });
+//     });
+// });
+
+
+// api.post('/post', function(req, res) {
+//     console.log('Entering purchase api 4 post');
+//     var purchase = new Purchase({
+//         user: req.body.user,
+//         amount: req.body.amount,
+//         description: req.body.description,
+//         item: req.body.item
+//     });
+
+//     purchase.save(function(err) {
+//         if (err) {
+//             console.error(err);
+//             return res.status(500).send({
+//                 msg: 'Failed to add purchase'
+//             });
+//         } else {
+//             console.log('Purchase added successfully');
+//             return res.status(201).send({
+//                 success: true,
+//                 msg: 'Purchase added successfully'
+//             });
+//         }
+//     });
+// });

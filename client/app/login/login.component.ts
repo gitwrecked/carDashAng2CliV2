@@ -30,10 +30,9 @@ export class LoginComponent {
       .subscribe(
         response => {
           let res = response.json();
-          console.log(JSON.stringify(res));
           this.loginMsg = (res.msg || res.message);
-          if(res.success) {            
-            localStorage.setItem('cd_token', res.cd_token);            
+          if(res.success) {           
+            localStorage.setItem('cd_token', res.token);            
             this.router.navigate(['/usersamt']);
             // reloading window until service is changed to observable
             window.location.reload();            

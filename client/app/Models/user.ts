@@ -1,4 +1,4 @@
-import { Purchase } from '../purchase/purchase';
+import { Purchase } from './purchase';
 
 export class User {
   constructor(
