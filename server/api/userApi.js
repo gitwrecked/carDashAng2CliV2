@@ -75,7 +75,7 @@ api.use(function(req, res, next) {
     if (token) {
         jwt.verify(token, config.server.secret, function(err, decoded) {
             if (err) {
-                return res.json({
+                return res.status(400).send({
                     msg: 'you must be logged in to perform this function...'
                 });
             } else {
@@ -84,7 +84,7 @@ api.use(function(req, res, next) {
             }
         });
     } else {
-        return res.json({
+        return res.status(400).send({
             msg: 'you must be logged in to perform this function...'
         });
     }
@@ -94,12 +94,12 @@ api.get('/', function(req, res) {
     User.find(function(err, users) {
         if (err) {
             console.error(err);
-            return res.json({
+            return res.status(500).send({
                 success: false,
                 msg: 'failed to retrieve users'
             });
         }
-        return res.json({
+        return res.status(200).send({
             success: true,
             users: users
         });

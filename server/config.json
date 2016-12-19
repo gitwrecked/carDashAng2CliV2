@@ -6,7 +6,8 @@
     "server": {
         "listenPort": 3001,
         "securePort": 0,
-        "secret": "gitwrecked"
+        "secret": "gitwrecked",
+        "tokenExpires": "24h"
     }
 
 }
