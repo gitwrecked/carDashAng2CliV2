@@ -7,7 +7,7 @@
         "listenPort": 3001,
         "securePort": 0,
         "secret": "gitwrecked",
-        "tokenExpires": "1h"
+        "tokenExpires": "24h"
     }
 
 }
