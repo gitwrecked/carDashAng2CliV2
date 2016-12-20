@@ -1,7 +1,6 @@
 {
     "db": {
         "url": "mongodb://localhost/test"
-        
     }
     ,
     "server": {

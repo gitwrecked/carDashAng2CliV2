@@ -5,6 +5,22 @@ var User = require('../models/user');
 
 var api = express.Router();
 
+api.get('/', function(req, res) {
+    User.find(function(err, users) {
+        if (err) {
+            console.error(err);
+            return res.status(500).send({
+                success: false,
+                msg: 'failed to retrieve users'
+            });
+        }
+        return res.status(200).send({
+            success: true,
+            users: users
+        });
+    });
+});
+
 api.use(function(req, res, next) {
     var token = req.headers.cd_token;
     if (token) {

@@ -22,6 +22,8 @@ export class UserFormComponent {
   purchases: Purchase[];
   users: User[];
   model = new Purchase("",null,"","");
+  public items:Array<string> =["Car Purchase","Parts","Tools","Other"];
+
 
 create(user: string , amount:number , description:string , item:string): void {
 console.log('inside userForm - method:create');
