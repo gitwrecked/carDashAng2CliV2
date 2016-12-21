@@ -1,18 +1,18 @@
-import { Injectable } from '@angular/core';
-import { Router, CanActivate } from '@angular/router';
-import { tokenNotExpired } from 'angular2-jwt';
+import { Injectable } 			from '@angular/core';
+import { Router, CanActivate } 	from '@angular/router';
+import { tokenNotExpired } 		from 'angular2-jwt';
+import { SessionService } 		from './session.service';
 
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private sessionService:SessionService) {}
 
-  canActivate() {
-    if (localStorage.getItem('cd_token')) {
-      return true;
+  canActivate():boolean {
+    if(!this.sessionService.isLoggedIn()){    	
+    	this.router.navigate(['login']);
+    	return false;
     }
-    console.log('User is not logged in');
-    this.router.navigate(['/login']);
-    return false;
+    return true;
   }
 }

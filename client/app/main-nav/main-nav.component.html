@@ -1,18 +1,18 @@
 <ul >
   <li>
     <li>
-    <a routerLink="/purchaseHistory">User Purchases</a>
-    </li>
-    <li>
     <a routerLink="/usersInvestments">Users Investments</a>
     </li>
-  <li [hidden]="!loggedIn">
+    <li>
+    <a routerLink="/purchaseHistory">User Purchases</a>
+    </li>
+  <li [hidden]="!sessionUser.cd_token">
     <a routerLink="/userForm">Expense Reporting</a>
   </li>
-  <li [hidden]="loggedIn">
+  <li [hidden]="sessionUser.cd_token">
     <a routerLink="/login">Login</a>
   </li>
-  <li [hidden]="!loggedIn">
-    <a (click)="logout()">Logout</a>
+  <li [hidden]="!sessionUser.cd_token">
+    <a (click)="logout()">{{ sessionUser.email }} | Logout</a>
   </li>
 </ul>
