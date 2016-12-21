@@ -1,8 +1,8 @@
 import { Component }      from '@angular/core';
 import { Router }         from '@angular/router';
 import { Http }           from '@angular/http';
-import { headers }        from '../common/headers';
-import { UsersService }   from '../users-service/users.service';
+import { SessionService } from '../common/session.service';
+
 
 const styles   = require('./login.component.css');
 const template = require('./login.component.html');
@@ -12,36 +12,33 @@ const template = require('./login.component.html');
   template: template,
   styles: [ styles ],
   providers: [
-    UsersService
+    SessionService
   ]
 })
 export class LoginComponent {
-  constructor(public router: Router, public http: Http, public usersService: UsersService) {
+  constructor(
+    private router: Router, 
+    private http: Http, 
+    private sessionService: SessionService) {
   }
 
-  public loginMsg:string;
-
+  public loginMsg;
+  public loading;
 
   login(event, email, password) {
+    this.loading = true;
     event.preventDefault();
 
-    let body = JSON.stringify({ email, password });
-    this.http.post('/api/v1/auth/login', body, { headers: headers})
-      .subscribe(
-        response => {
-          let res = response.json();
-          this.loginMsg = (res.msg || res.message);
-          if(res.success) {           
-            localStorage.setItem('cd_token', res.token);            
-            this.router.navigate(['/usersamt']);
-            // reloading window until service is changed to observable
-            window.location.reload();            
-          }
-        },
-        error => {          
-          console.error(error.text());
-        }
-      );
+    let data = JSON.stringify({ email, password });
+    this.sessionService.login(data).subscribe((res) => {
+      console.log('login: ' + JSON.stringify(res));
+      this.loginMsg = (res.msg);
+      if(res.success) {   
+        this.router.navigate(['usersInvestments']);         
+        window.location.reload();              
+      }
+      this.loading = false;
+    });
   }
 
   register(event) {
