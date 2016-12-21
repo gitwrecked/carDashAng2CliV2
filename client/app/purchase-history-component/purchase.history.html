@@ -19,9 +19,13 @@
 <table class="table table-striped">
      <tbody>
       <tr *ngFor="let purchase of user.purchases">
-              <td>{{purchase.amount}}</td>
-              <td>{{purchase.item}}</td>
+              <td >{{purchase.amount}}</td>
+    <!--           <input type="amount" name="amount">
+                {purchase.amount}}
+              </input> -->
+              <td >{{purchase.item}}</td>
               <td>{{purchase.description}}</td>
+             
       </tr>
   </tbody>
 </table>

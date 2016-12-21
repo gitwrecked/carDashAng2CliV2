@@ -1,9 +1,8 @@
-var express = require('express'); 
-var jwt = require('jsonwebtoken');
-var config = require('../config');
-var User = require('../models/user');
-
-var api = express.Router();
+var express     = require('express'); 
+var jwt         = require('jsonwebtoken');
+var config      = require('../config');
+var User        = require('../models/user');
+var api         = express.Router();
 
 api.get('/', function(req, res) {
     User.find(function(err, users) {
@@ -11,7 +10,7 @@ api.get('/', function(req, res) {
             console.error(err);
             return res.status(500).send({
                 success: false,
-                msg: 'failed to retrieve users'
+                msg: 'Failed to retrieve users'
             });
         }
         return res.status(200).send({
@@ -28,7 +27,7 @@ api.use(function(req, res, next) {
             if (err) {
                 console.log(err);
                 return res.status(400).send({
-                    msg: 'User api.use JWT Error'
+                    msg: 'Unable to verify token'
                 });
             } else {
                 req.decoded = decoded;
@@ -37,45 +36,30 @@ api.use(function(req, res, next) {
         });
     } else {
         return res.status(400).send({
-            msg: 'you must be logged in to perform this function...'
+            msg: 'You must be logged in to perform this function...'
         });
     }
 });
 
-api.get('/', function(req, res) {
-    User.find(function(err, users) {
-        if (err) {
-            console.error(err);
-            return res.status(500).send({
-                success: false,
-                msg: 'failed to retrieve users'
-            });
-        }
-        return res.status(200).send({
-            success: true,
-            users: users
-        });
-    });
-});
-
 api.post('/', function(req, res) {
-    User.update({email: req.body.email}, {$push: { purchases: req.body.purchase }}, function (err, numUpdated) {
-  if (err) {
-    console.log(err);
-    return res.json({
-                msg: 'failed to add purchase to user array...'
+    User.replaceOne({email: req.body.user.email}, req.body.user, function (err, numUpdated) {
+      if (err) {
+        console.error(err);
+        return res.status(500).send({
+                msg: 'Failed to add user purchase'
             });
-  } else if (numUpdated) {
-    console.log("numUpdated");
-    console.log(numUpdated);
-     return res.json({
+      } else if (numUpdated) {        
+        console.log(numUpdated);
+            return res.status(201).send({
                 success: true,
-                msg: 'purchase added successfully!'
+                msg: 'Purchase added successfully!'
             });
-  } else {
-    console.log('No document found with defined "find" criteria!');
-  }
-});
+      } else {
+        return res.status(400).send({
+                msg: 'No document found with defined "find" criteria!'
+            });        
+      }
+    });
 });
 
 module.exports = api;
