@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { User }    from '../user/user';
-import { Purchase } from '../purchase/purchase';
+import { User }    from '../Models/user';
+import { Purchase } from '../Models/purchase';
 import { UsersService } from '../users-service/users.service';
 import { Router } from '@angular/router';
 
@@ -22,6 +22,8 @@ export class UserFormComponent {
   purchases: Purchase[];
   users: User[];
   model = new Purchase("",null,"","");
+  public readonly items:Array<string> =["Car Purchase","Parts","Tools","Other"];
+
 
 create(user: string , amount:number , description:string , item:string): void {
 console.log('inside userForm - method:create');
@@ -70,17 +72,11 @@ this.model = new Purchase("",0,"","");
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
+// add .then specific error catching when needed
+// , function (error) {
+//       console.log(error); // will be called if getRights fails
+//       return Promise.reject(error);
+// })
 
 
 

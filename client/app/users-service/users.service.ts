@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { User } from '../user/user';
-import { Purchase } from '../purchase/purchase';
+import { User } from '../Models/user';
+import { Purchase } from '../Models/purchase';
 import { Http, RequestOptions } from '@angular/http';
 import { headers } from '../common/headers';
 import 'rxjs/add/operator/toPromise';
@@ -8,24 +8,17 @@ import 'rxjs/add/operator/toPromise';
 @Injectable()
 export class UsersService {
   
-  private catsUrl = 'cats/get';// URL to web api
   private purchasesUrl = '/api/v1/purchase/';// URL to web api
-  private usersUrl = '/api/v1/user/get';
-  private usersPurchaseUrl = '/api/v1/user/post';
-  private usersPost = 'cats/post';
-  private purchaseApi = '/api/v1/purchase/post'
+  private usersUrl = '/api/v1/user/';
+  private usersPurchaseUrl = '/api/v1/user/';
+  private purchaseApi = '/api/v1/purchase/'
   constructor(private http: Http) { }
-
-  // private headers = new Headers({ 'Content-Type': 'application/json' });
 
     getPurchases(): Promise<Purchase[]> {
     console.log(this.purchasesUrl);
     return this.http.get(this.purchasesUrl)
       .toPromise()
       .then(response => {
-        // console.log(response);
-        // console.log("Purchases array in service");
-        // console.log(response.json().purchases);
         return response.json().purchases as Purchase[];
 
       })
@@ -34,38 +27,22 @@ export class UsersService {
 
   getUsers(): Promise<User[]> {
     console.log(this.usersUrl);
-    return this.http.get(this.usersUrl)
+    let options = new RequestOptions({ headers: headers });
+    return this.http
+      .get(this.usersUrl, options)
       .toPromise()
       .then(response => {
-        // console.log(response);
-        // console.log("Users array in service");
-        // console.log(response.json().users);
-        return response.json().users as User[];
+       return response.json().users as User[];
 
       })
       .catch(this.handleError);
   };
 
-
-   getCats(): Promise<User[]> {
-    console.log(this.usersUrl);
-    return this.http.get(this.catsUrl)
-      .toPromise()
-      .then(response => {
-        // console.log(response);
-        // console.log("CATS array in service");
-        // console.log(response.json().cats);
-        return response.json().cats as User[];
-
-      })
-      .catch(this.handleError);
-  };
   addUserPurchase(email: string, purchase:Purchase ): Promise<Purchase> {
   console.log("----inside userService method:addUserPurchase");
   console.log(email);
   console.log(purchase);
   let options = new RequestOptions({ headers: headers });
-  // console.log("url: "+this.purchaseApi);
   return this.http
      .post(this.usersPurchaseUrl, JSON.stringify({ email: email ,purchase:purchase}), options)
      .toPromise()

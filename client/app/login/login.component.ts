@@ -28,6 +28,7 @@ export class LoginComponent {
   login(event, email, password) {
     this.loading = true;
     event.preventDefault();
+
     let data = JSON.stringify({ email, password });
     this.sessionService.login(data).subscribe((res) => {
       console.log('login: ' + JSON.stringify(res));
