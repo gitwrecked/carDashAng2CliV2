@@ -3,14 +3,12 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  // template: '<user-form></user-form>'
+  styleUrls: ['./app.component.css'],  
 })
-export class AppComponent implements OnInit{
-  title = 'Welcome! Plese enter in your info below';
+export class AppComponent implements OnInit {
 
   ngOnInit(): void {
-    localStorage.getItem('cd_token') ? console.info('user still logged in') : console.info('not logged in yet');
-  }
+    
+  }	
 
 }
