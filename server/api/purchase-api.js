@@ -7,7 +7,6 @@ var api = express.Router();
 
 
 api.use(function(req, res, next) {
-  console.log('Entering use');
   var token = req.headers.cd_token;
   if (token) {
     jwt.verify(token, config.server.secret, function(err, decoded) {
@@ -25,7 +24,6 @@ api.use(function(req, res, next) {
 });
 
 api.post('/', function(req, res) {
-  console.log('Entering purchase api 4 post after USE');
   var purchase = new Purchase({
     user: req.body.user,
     amount: req.body.amount,
@@ -38,7 +36,6 @@ api.post('/', function(req, res) {
       console.error(err);
       return res.status(500).send({msg: 'Failed to add purchase...'});
     } else {
-      console.log('Purchase added successfully!');
       return res.status(201).send(
           {success: true, msg: 'Purchase added successfully!'});
     }

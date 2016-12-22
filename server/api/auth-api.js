@@ -18,10 +18,8 @@ api.post('/register', function(req, res) {
         {expiresIn: config.server.tokenExpires});
     return res.status(201).send({
       success: true,
-
       msg: 'Registered user successfully',
       cd_token: token,
-
       email: newUser.email
     });
   });
@@ -46,7 +44,6 @@ api.post('/login', function(req, res) {
       success: true,
       msg: 'Logged in user successfully',
       cd_token: token,
-
       email: user.email,
       admin: user.admin
     });

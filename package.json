@@ -14,7 +14,7 @@
     "watch": "ng build --watch",
     "lint": "tslint \"client/**/*.ts\"",
     "test": "ng test",
-    "test-api": "jasmine-node server/api/",
+    "test-api": "jasmine-node server/api/test/",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
     "seed-users": "mongoimport -h localhost:27017 -d test -c users --file server/seed/users.json",
