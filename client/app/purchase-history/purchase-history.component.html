@@ -11,7 +11,6 @@
 </thead><tbody></tbody></table>
 
 <div *ngFor="let user of users" > 
-<!-- {{user.purchases.length}} -->
 <div *ngIf="user.purchases.length > 0">
   
 <h4>{{user.email}}</h4>
@@ -19,28 +18,10 @@
 <table class="table table-striped">
      <tbody>
       <tr *ngFor="let purchase of user.purchases">
-              <td >{{purchase.amount}}</td>
-    <!--           <input type="amount" name="amount">
-                {purchase.amount}}
-              </input> -->
-              <td >{{purchase.item}}</td>
-              <td>{{purchase.description}}</td>
-             
+          <td >{{purchase.item}}</td>
+          <td>{{purchase.description}}</td>             
       </tr>
   </tbody>
 </table>
  </div>
-<!-- <ul>
-  <li *ngFor="let user of users">
-    {{user.email}}
-    <ul>
-      <li *ngFor="let purchase of user.purchases">
-        {{purchase.amount}}
-        {{purchase.item}}
-        {{purchase.description}}
-      </li>
-    </ul>
-  </li>
-</ul> -->
 </div>
-

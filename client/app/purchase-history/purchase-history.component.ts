@@ -1,9 +1,8 @@
-import { Component }       from '@angular/core';
-import { User }            from '../Models/user';
-import { UsersService }    from '../users-service/users.service';
-import { OnInit }          from '@angular/core';
-import { Router }          from '@angular/router';
-import { Purchase }        from '../Models/purchase';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {Purchase} from '../Models/purchase';
+import {User} from '../Models/user';
+import {UsersService} from '../users-service/users.service';
 
 const template = require('./purchase-history.component.html');
 const styles   = require('./purchase-history.component.scss');
@@ -15,25 +14,23 @@ const styles   = require('./purchase-history.component.scss');
 
 })
 
-export class PurchaseHistoryComponent {
-  constructor(private router: Router, private usersService: UsersService) { }
+export class PurchaseHistoryComponent implements OnInit {
+  public arrayOfKeys;
+  public users: User[];
+  public purchases: Purchase[];
+
+  constructor(private router: Router, private usersService: UsersService) {}
   ngOnInit(): void {
     this.getPurchases();
   }
-  public arrayOfKeys;
-
-  users: User[];
-  purchases: Purchase[];
 
   getPurchases(): void {
-    this.usersService.getUsers().then(
-      users => {       
-        this.users = users;
-      }
-      ).catch(function(e) {        
-        console.error(e); 
-  });
+    this.usersService.getUsers()
+        .then(users => {
+          this.users = users;
+        })
+        .catch(function(e) {
+          console.error(e);
+        });
   }
 }
-
-

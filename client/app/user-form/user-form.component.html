@@ -1,4 +1,4 @@
-  <h2 id="centerHeading">User Spending </h2>
+<h2 id="centerHeading">User Spending </h2>
   <div class="container">
  
   <br>
@@ -6,22 +6,11 @@
       <form #userForm="ngForm">
         <div class="form-group">
           <label for="name">User Email</label>
-<!--           <input type="text" class="form-control" id="user"
-                 required
-                 [(ngModel)]="model.user" name="user"
-                 #user="ngModel"> -->
-
               <select class="form-control"  id="user"
                       required
                       [(ngModel)]="model.user" name="user" #user="ngModel">
                 <option *ngFor="let user of users" [value]="user.email">{{user.email}}</option>
               </select>
-
-<!--           <div [hidden]="user.valid || user.pristine" 
-               class="alert alert-danger">
-            User is required
-          </div> -->
-
         </div>
 
 
@@ -29,17 +18,7 @@
           <label for="amount">Amount</label>
           <input type="number" class="form-control" id="amount"
                  [(ngModel)]="model.amount" name="amount" >
-<!--           <div [hidden]="amount.valid || amount.pristine" 
-               class="alert alert-danger">
-            amount is required
-          </div> -->
         </div>
-<!--         <div class="form-group">
-          <label for="item">Item</label>
-          <input type="text" class="form-control" id="item"
-                 [(ngModel)]="model.item" name="item" >
-        </div> -->
-
  <div class="form-group">
           <label for="item">Item</label>
   <select class="form-control"  id="item"
@@ -47,11 +26,6 @@
           [(ngModel)]="model.item" name="item" #item="ngModel">
     <option *ngFor="let item of items" [value]="item">{{item}}</option>
   </select>
-  
-<!--    <div [hidden]="item.valid || item.pristine" 
-               class="alert alert-danger">
-            item is required
-          </div> -->
 </div> 
 
 
@@ -59,11 +33,6 @@
           <label for="description">Description</label>
           <input type="text" class="form-control" id="description"
                  [(ngModel)]="model.description" name="description" >
-
-<!--    <div [hidden]="description.valid || description.pristine" 
-               class="alert alert-danger">
-            description is required
-          </div> -->
         </div>
 
         <button type="button" class="btn btn-default" (click)="addUserPurchase(model.user,model.amount,model.description,model.item)"> post</button>
