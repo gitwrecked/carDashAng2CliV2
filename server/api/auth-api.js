@@ -10,7 +10,7 @@ api.post('/register', function(req, res) {
   var newUser = new User({email: req.body.email, password: req.body.password});
   newUser.save(function(err) {
     if (err) {
-      return res.status(400).send(
+      return res.status(401).send(
           {msg: 'A user with that email already exists'});
     }
     var token = jwt.sign(
@@ -33,7 +33,7 @@ api.post('/login', function(req, res) {
       return res.status(500).send({msg: 'There was an error on login'});
     }
     if (!user || !user.email || !user.password) {
-      return res.status(400).send({msg: 'The email or password do not match'});
+      return res.status(401).send({msg: 'The email or password do not match'});
     }
     if (!bcrypt.compareSync(req.body.password, user.password)) {
       return res.status(200).send({msg: 'The email or password do not match'});

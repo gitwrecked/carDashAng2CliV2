@@ -23,9 +23,9 @@ db.once('open', function() {
   console.log('mongo db is connected!');
 });
 
-app.use('/api/v1/auth', require('./api/authApi'));
-app.use('/api/v1/purchase', require('./api/purchaseApi'));
-app.use('/api/v1/user', require('./api/userApi'));
+app.use('/api/v1/auth', require('./api/auth-api'));
+app.use('/api/v1/purchase', require('./api/purchase-api'));
+app.use('/api/v1/user', require('./api/user-api'));
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '/../dist/index.html'));
