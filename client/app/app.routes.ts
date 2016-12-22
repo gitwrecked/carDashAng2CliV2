@@ -1,7 +1,7 @@
 import { RouterModule }              from '@angular/router';
 import { AuthGuard } 				 from './common/auth.guard';
-import { PurchaseHistoryComponent }  from './purchase-history-component/purchase.history.component';
-import { UserInvestmentComponent }   from './user-investment-component/user-investment.component';
+import { PurchaseHistoryComponent }  from './purchase-history/purchase-history.component';
+import { UserInvestmentComponent }   from './user-investment/user-investment.component';
 import { UserFormComponent }         from './user-form/user-form.component';
 import { LoginComponent }            from './login/login.component';
 

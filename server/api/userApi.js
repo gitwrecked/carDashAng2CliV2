@@ -42,14 +42,13 @@ api.use(function(req, res, next) {
 });
 
 api.post('/', function(req, res) {
-    User.replaceOne({email: req.body.user.email}, req.body.user, function (err, numUpdated) {
+    User.update({email: req.body.email},  {$push: { purchases: req.body.purchase }}, function (err, numUpdated) {
       if (err) {
         console.error(err);
         return res.status(500).send({
                 msg: 'Failed to add user purchase'
             });
-      } else if (numUpdated) {        
-        console.log(numUpdated);
+      } else if (numUpdated) {                
             return res.status(201).send({
                 success: true,
                 msg: 'Purchase added successfully!'

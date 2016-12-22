@@ -6,8 +6,8 @@ import { RouterModule }              from '@angular/router';
 import { ChartsModule }              from 'ng2-charts/ng2-charts';
 
 import { AppComponent }              from './app.component';
-import { PurchaseHistoryComponent }  from './purchase-history-component/purchase.history.component';
-import { UserInvestmentComponent }   from './user-investment-component/user-investment.component';
+import { PurchaseHistoryComponent }  from './purchase-history/purchase-history.component';
+import { UserInvestmentComponent }   from './user-investment/user-investment.component';
 import { UserFormComponent }         from './user-form/user-form.component';
 import { UsersService }              from './users-service/users.service';
 import { LoginComponent }            from './login/login.component';
@@ -40,6 +40,5 @@ import { AppRoutes }                 from './app.routes';
   ],
   bootstrap: [AppComponent]
 })
-
 
 export class AppModule { }

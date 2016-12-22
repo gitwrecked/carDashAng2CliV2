@@ -3,9 +3,8 @@ import { Router }         from '@angular/router';
 import { Http }           from '@angular/http';
 import { SessionService } from '../common/session.service';
 
-
-const styles   = require('./login.component.css');
 const template = require('./login.component.html');
+const styles   = require('./login.component.scss');
 
 @Component({
   selector: 'login',

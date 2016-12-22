@@ -2,8 +2,8 @@ import { Component, OnInit }	from '@angular/core';
 import { Router }         		from '@angular/router';
 import { SessionService } 		from '../common/session.service';
 
-const styles   = require('./main-nav.component.css');
 const template = require('./main-nav.component.html');
+const styles   = require('./main-nav.component.scss');
 
 @Component({
   selector: 'main-nav',

@@ -1,13 +1,16 @@
-import { Component } from '@angular/core';
-import { User }    from '../Models/user';
-import { Purchase } from '../Models/purchase';
-import { UsersService } from '../users-service/users.service';
-import { Router } from '@angular/router';
+import { Component }      from '@angular/core';
+import { User }           from '../Models/user';
+import { Purchase }       from '../Models/purchase';
+import { UsersService }   from '../users-service/users.service';
+import { Router }         from '@angular/router';
+
+const template = require('./user-form.component.html');
+const styles   = require('./user-form.component.scss');
 
 @Component({
   selector: 'user-form',
-  templateUrl: 'user-form.component.html',
-  styleUrls: ['user-form.component.css'],
+  templateUrl: template,
+  styleUrls: [styles],
   providers: [UsersService]
 })
 
@@ -26,8 +29,6 @@ export class UserFormComponent {
 
 
 create(user: string , amount:number , description:string , item:string): void {
-console.log('inside userForm - method:create');
-
     user = user.trim();
     if (!user) { return; }
     this.usersService.create(user,amount,description,item)
@@ -38,16 +39,11 @@ console.log('inside userForm - method:create');
   };
 
 addUserPurchase(user: string , amount:number , description:string , item:string): void {
-console.log('inside userForm - method:addUserPurchase');
-console.log((user+' : '+amount+' : '+description+' : '+item));
     var purchase = new Purchase(user,amount,description,item);
     user = user.trim();
-    if (!user) { return; }
-    console.log("Sending PURCHASE from component to service: ");
-    console.log(purchase);
+    if (!user) { return; }   
     this.usersService.addUserPurchase(user,purchase)
-      .then(user => {
-        console.log("inside then for add purchase component?")
+      .then(user => {        
       });
       this.clearForm();
   };
@@ -59,24 +55,13 @@ this.model = new Purchase("",0,"","");
     this.usersService.getUsers().then(
       user => {
         this.users = user;
-        console.log("users in component");
-        console.log(this.users);
         this.isLoading = true;
-
-      }
-      // data => doWork('text', data)
-      ).catch(function(e) {
-        console.log('Inside getUsers Exception'); 
-      console.log(e); 
+      }      
+      ).catch(function(e) {        
+      console.error(e); 
   });
   }
 }
-
-// add .then specific error catching when needed
-// , function (error) {
-//       console.log(error); // will be called if getRights fails
-//       return Promise.reject(error);
-// })
 
 
 
