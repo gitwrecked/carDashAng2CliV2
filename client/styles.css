@@ -1,3 +1,10 @@
+#page-loader {
+  position: fixed;
+  top: 50%;
+  left: 45%;
+  transform: translate(-50%,-50%);
+}
+
 li>a:hover {
   cursor: pointer;
   color: #fff !important;
@@ -32,14 +39,9 @@ ul {
     background-color: #333;
 }
 
-li {
-    float: left;
-}
-
 li a {
     display: block;
     color: white;
-    text-align: center;
     padding: 14px 16px;
     text-decoration: none;
 }

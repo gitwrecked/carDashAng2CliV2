@@ -8,8 +8,8 @@
     "npm": "3.10.8"
   },
   "scripts": {
-    "heroku-prebuild": "npm install -g angular-cli",
-    "heroku-postbuild": "ng build",
+    "heroku-prebuild": "npm install -g angular-cli bower",
+    "heroku-postbuild": "bower install ; ng build",
     "start": "node server/server.js",
     "watch": "ng build --watch",
     "lint": "tslint \"client/**/*.ts\"",
@@ -35,10 +35,9 @@
     "@angular/platform-browser": "2.2.1",
     "@angular/platform-browser-dynamic": "2.2.1",
     "@angular/router": "3.2.1",
-    "angular2-jwt": "^0.1.27",
+    "angular2-jwt": "0.1.27",
     "bcrypt-nodejs": "0.0.3",
-    "body-parser": "1.15.2",
-    "chart.js": "2.4.0",
+    "body-parser": "1.15.2",    
     "cookie-parser": "1.4.3",
     "core-js": "2.4.1",
     "express": "4.14.0",
