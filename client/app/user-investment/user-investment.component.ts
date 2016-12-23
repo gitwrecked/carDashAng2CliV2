@@ -35,24 +35,27 @@ export class UserInvestmentComponent implements OnInit {
   public chartHovered(e: any): void {}
 
   populateChart() {
-    let arrayLength = this.users.length;
-    for (let i = 0; i < arrayLength; i++) {
-      this.doughnutChartLabels.push(this.users[i].email);
-      let amt = 0;
-      for (let t = 0; t < this.users[i].purchases.length; t++) {
-        if (!(this.users[i].purchases[t] && this.users[i].purchases[t].amount)) {
-          continue;
-        }
-        amt = amt + this.users[i].purchases[t].amount;
-        this.doughnutChartData.push(amt);
+    for (let i = 0; i < this.users.length; i++) {
+      let currentUser = this.users[i];
+      this.doughnutChartLabels.push(currentUser.email);
+      let currentUserPurchases = this.users[i].purchases;
+      if (currentUserPurchases.length < 1) {
+        continue;
       }
+      let amt = 0;
+      for (let t = 0; t < currentUserPurchases.length; t++) {
+        if (currentUserPurchases[t].amount) {
+          amt = amt + currentUserPurchases[t].amount;
+        }
+      }
+      this.doughnutChartData.push(amt);
     }
   }
 
   getPurchases(): void {
     this.usersService.getPurchases()
-        .then(purchase => {
-          this.purchases = purchase;
+        .then(purchases => {
+          this.purchases = purchases;
         })
         .catch(function(e) {
           console.error(e);

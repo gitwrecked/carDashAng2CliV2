@@ -76,7 +76,7 @@ api.put('/:email', function(req, res) {
 });
 
 api.delete('/:email', function(req, res) {
-  User.remove({email: req.params.email}, function(err) {
+  User.findOneAndRemove({email: req.params.email}, {}, function(err) {
     if (err) {
       console.error(err);
       return res.status(500).send({msg: 'Failed to delete user'});
