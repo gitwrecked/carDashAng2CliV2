@@ -1,8 +1,24 @@
 #page-loader {
   position: fixed;
   top: 50%;
-  left: 45%;
+  left: 50%;
   transform: translate(-50%,-50%);
+}
+
+.blink {
+  animation: blinking 0.7s infinite;
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 li>a:hover {
