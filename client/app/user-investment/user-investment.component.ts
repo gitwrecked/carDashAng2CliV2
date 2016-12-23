@@ -38,10 +38,11 @@ export class UserInvestmentComponent implements OnInit {
     let arrayLength = this.users.length;
     for (let i = 0; i < arrayLength; i++) {
       this.doughnutChartLabels.push(this.users[i].email);
-      let amt = 0;      
+      let amt = 0;
       for (let t = 0; t < this.users[i].purchases.length; t++) {
-        if(this.users[i].purchases[t] && 
-           this.users[i].purchases[t].amount ){ continue; }
+        if (this.users[i].purchases[t] && this.users[i].purchases[t].amount) {
+          continue;
+        }
         amt = amt + this.users[i].purchases[t].amount;
         this.doughnutChartData.push(amt);
       }

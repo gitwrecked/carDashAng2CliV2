@@ -18,7 +18,7 @@ export class MainNavComponent implements OnInit {
   constructor(private sessionService: SessionService, private router: Router) {}
 
   ngOnInit(): void {
-    this.sessionUser = this.sessionService.getSession();    
+    this.sessionUser = this.sessionService.getSession();
   }
 
   logout(): void {
