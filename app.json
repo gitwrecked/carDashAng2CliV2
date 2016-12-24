@@ -1,0 +1,32 @@
+{
+  "name": "carDashAng2CliV2",
+  "scripts": {
+  },
+  "env": {
+    "MONGO_URI": {
+      "required": true
+    },
+    "NODE_ENV": {
+      "required": true
+    },
+    "NODE_MODULES_CACHE": {
+      "required": true
+    },
+    "NPM_CONFIG_PRODUCTION": {
+      "required": true
+    },
+    "WEBHOOK_URL": {
+      "required": true
+    }
+  },
+  "formation": {
+  },
+  "addons": [
+    "deployhooks"
+  ],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
