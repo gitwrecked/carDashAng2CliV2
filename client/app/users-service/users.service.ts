@@ -43,23 +43,6 @@ export class UsersService {
         .catch(this.handleError);
   };
 
-  create(name: string, amount: number, description: string, item: string):
-      Promise<Purchase> {
-    let options = new RequestOptions({headers: headers});
-    return this.http
-        .post(
-            '/api/v1/purchase/', JSON.stringify({
-              user: name,
-              amount: amount,
-              description: description,
-              item: item
-            }),
-            options)
-        .toPromise()
-        .then(res => res.json().data)
-        .catch(this.handleError);
-  };
-
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error);
     return Promise.reject(error.message || error);
