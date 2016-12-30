@@ -12,7 +12,7 @@ api.get('/', function(req, res) {
           {success: false, msg: 'Failed to retrieve users'});
     }
     return res.status(200).send(
-        {success: true, users: users, msg: 'User retrieved successfully'});
+        {success: true, users: users, msg: 'Users retrieved successfully'});
   });
 });
 
@@ -30,7 +30,7 @@ api.use(function(req, res, next) {
     });
   } else {
     return res.status(401).send(
-        {msg: 'You must be logged in to perform this function...'});
+        {msg: 'You must be logged in to perform this function'});
   }
 });
 
@@ -55,7 +55,7 @@ api.post('/', function(req, res) {
           return res.status(500).send({msg: 'Failed to update user'});
         } else if (numUpdated) {
           return res.status(201).send(
-              {success: true, msg: 'Updated user successfully!'});
+              {success: true, msg: 'Updated user successfully'});
         } else {
           return res.status(400).send(
               {msg: 'No document found with defined "find" criteria!'});
@@ -70,7 +70,7 @@ api.put('/:email', function(req, res) {
       return res.status(500).send({msg: 'Failed to update user'});
     } else {
       return res.status(201).send(
-          {success: true, msg: 'Updated user successfully!'});
+          {success: true, msg: 'Updated user successfully'});
     }
   });
 });
@@ -82,7 +82,7 @@ api.delete('/:email', function(req, res) {
       return res.status(500).send({msg: 'Failed to delete user'});
     } else {
       return res.status(200).send(
-          {success: true, msg: 'User deleted successfully!'});
+          {success: true, msg: 'User deleted successfully'});
     }
   });
 });

@@ -34,7 +34,7 @@ api.post('/login', function(req, res) {
       return res.status(401).send({msg: 'The email or password do not match'});
     }
     if (!bcrypt.compareSync(req.body.password, user.password)) {
-      return res.status(200).send({msg: 'The email or password do not match'});
+      return res.status(401).send({msg: 'The email or password do not match'});
     }
 
     var token = jwt.sign(

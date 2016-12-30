@@ -7,7 +7,10 @@ var cookieParser = require('cookie-parser');
 var bodyParser   = require('body-parser');
 var mongoose     = require('mongoose');
 var config       = require('./config');
+var argv         = require('minimist')(process.argv.slice(2));
 var app          = express();
+
+var port = process.env.PORT || config.server.listenPort;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -26,6 +29,7 @@ db.once('open', function() {
 app.use('/api/v1/auth', require('./api/auth-api'));
 app.use('/api/v1/purchase', require('./api/purchase-api'));
 app.use('/api/v1/user', require('./api/user-api'));
+app.use('/api/v1', require('./swagger-app'));
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '/../dist/index.html'));
@@ -37,8 +41,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
-
-app.set('port', (process.env.PORT || config.server.listenPort));
+app.set('port', port);
 app.listen(app.get('port'), function() {
   console.log('Example app listening on port ' + app.get('port'));
 });

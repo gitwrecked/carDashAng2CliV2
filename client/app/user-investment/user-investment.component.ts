@@ -15,7 +15,7 @@ const styles   = require('./user-investment.component.scss');
   providers: [UsersService]
 })
 export class UserInvestmentComponent implements OnInit {
-  private isLoading;
+  private isLoading: boolean;
   public purchases: Purchase[];
   public users: User[];
   public userEmails: Type[];
