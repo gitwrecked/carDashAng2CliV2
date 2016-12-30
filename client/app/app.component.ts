@@ -1,9 +1,21 @@
 import {Component, OnInit} from '@angular/core';
+import {AppComponentAnimations} from './app.component.animations';
 
 const template = require('./app.component.html');
 const styles   = require('./app.component.scss');
 
-@Component({selector: 'app-root', templateUrl: template, styleUrls: [styles]})
+@Component({
+  selector: 'app-root',
+  styleUrls: [styles],
+  templateUrl: template,
+  animations: AppComponentAnimations
+})
 export class AppComponent implements OnInit {
-  ngOnInit(): void {}
+  page: string = 'loading';
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.page = 'loaded';
+    }, 500);
+  }
 }
