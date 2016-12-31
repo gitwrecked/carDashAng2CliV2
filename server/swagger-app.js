@@ -1,11 +1,13 @@
-var express    = require('express');
-var path       = require('path');
-var bodyParser = require('body-parser');
-var config     = require('./config');
-var argv       = require('minimist')(process.argv.slice(2));
-var swaggerApp = express();
-var swagger    = require('swagger-node-express').createNew(swaggerApp);
-var port       = process.env.PORT || config.server.listenPort;
+"use strict"; 
+
+const express    = require('express');
+const path       = require('path');
+const bodyParser = require('body-parser');
+const config     = require('./config');
+const argv       = require('minimist')(process.argv.slice(2));
+const swaggerApp = express();
+const swagger    = require('swagger-node-express').createNew(swaggerApp);
+const port       = process.env.PORT || config.server.listenPort;
 
 swaggerApp.use(express.static(path.join(__dirname, '/../swagger')));
 

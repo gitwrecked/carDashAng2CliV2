@@ -1,19 +1,20 @@
-var express = require('express');
-var jwt     = require('jsonwebtoken');
-var config  = require('../config');
-var bcrypt  = require('bcrypt-nodejs');
-var User    = require('../models/user');
+"use strict"; 
 
-var api = express.Router();
+const express = require('express');
+const jwt     = require('jsonwebtoken');
+const config  = require('../config');
+const bcrypt  = require('bcrypt-nodejs');
+const User    = require('../models/user');
+const api     = express.Router();
 
 api.post('/register', function(req, res) {
-  var newUser = new User({email: req.body.email, password: req.body.password});
+  let newUser = new User({email: req.body.email, password: req.body.password});
   newUser.save(function(err) {
     if (err) {
       return res.status(401).send(
           {msg: 'A user with that email already exists'});
     }
-    var token = jwt.sign(
+    const token = jwt.sign(
         {user: newUser.email}, config.server.secret,
         {expiresIn: config.server.tokenExpires});
     return res.status(201).send({
@@ -37,7 +38,7 @@ api.post('/login', function(req, res) {
       return res.status(401).send({msg: 'The email or password do not match'});
     }
 
-    var token = jwt.sign(
+    const token = jwt.sign(
         {user: user.email}, config.server.secret,
         {expiresIn: config.server.tokenExpires});
     return res.status(200).send({

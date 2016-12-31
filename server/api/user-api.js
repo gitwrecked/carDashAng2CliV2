@@ -1,8 +1,10 @@
-var express = require('express');
-var jwt     = require('jsonwebtoken');
-var config  = require('../config');
-var User    = require('../models/user');
-var api     = express.Router();
+"use strict"; 
+
+const express = require('express');
+const jwt     = require('jsonwebtoken');
+const config  = require('../config');
+const User    = require('../models/user');
+const api     = express.Router();
 
 api.get('/', function(req, res) {
   User.find(function(err, users) {
@@ -17,7 +19,7 @@ api.get('/', function(req, res) {
 });
 
 api.use(function(req, res, next) {
-  var token = req.headers.cd_token;
+  const token = req.headers.cd_token;
   if (token) {
     jwt.verify(token, config.server.secret, function(err, decoded) {
       if (err) {

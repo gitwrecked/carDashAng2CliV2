@@ -1,16 +1,19 @@
-require('rootpath')();
-var express      = require('express');
-var path         = require('path');
-var favicon      = require('serve-favicon');
-var logger       = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser   = require('body-parser');
-var mongoose     = require('mongoose');
-var config       = require('./config');
-var argv         = require('minimist')(process.argv.slice(2));
-var app          = express();
+"use strict"; 
 
-var port = process.env.PORT || config.server.listenPort;
+require('rootpath')();
+
+const express      = require('express');
+const path         = require('path');
+const favicon      = require('serve-favicon');
+const logger       = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser   = require('body-parser');
+const mongoose     = require('mongoose');
+const config       = require('./config');
+const argv         = require('minimist')(process.argv.slice(2));
+const app          = express();
+
+const port = process.env.PORT || config.server.listenPort;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -20,7 +23,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '/../dist')));
 app.set('mongo_uri', (process.env.MONGO_URI || config.db.url))
 mongoose.connect(app.get('mongo_uri'));
-var db = mongoose.connection;
+const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo db connection error:'));
 db.once('open', function() {
   console.log('mongo db is connected!');
@@ -36,7 +39,7 @@ app.get('/*', function(req, res) {
 });
 
 app.use(function(req, res, next) {
-  var err    = new Error('Not Found');
+  const err  = new Error('Not Found');
   err.status = 404;
   next(err);
 });

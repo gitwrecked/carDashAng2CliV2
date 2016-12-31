@@ -1,9 +1,11 @@
-var frisby = require('frisby');
+"use strict"; 
 
-var server    = 'http://localhost:';
-var port      = '3001';
-var testEmail = new Date().getMilliseconds().toString().concat('@email.com');
-var testUser  = {};
+const frisby    = require('frisby');
+const server    = 'http://localhost:';
+const port      = '3001';
+const testEmail = new Date().getMilliseconds().toString().concat('@email.com');
+
+let testUser = {};
 
 frisby.create('User register')
     .post(

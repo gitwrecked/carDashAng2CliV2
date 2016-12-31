@@ -1,6 +1,8 @@
-var mongoose = require('mongoose');
+"use strict"; 
 
-var purchaseSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+
+let purchaseSchema = new mongoose.Schema({
   user: {type: String, required: true},
   amount: {type: Number, required: true},
   description: {type: String},
@@ -10,7 +12,7 @@ var purchaseSchema = new mongoose.Schema({
 });
 
 purchaseSchema.pre('save', function(next) {
-  var currentDate = new Date();
+  let currentDate = new Date();
   this.updated_at = currentDate;
   if (!this.created_at) {
     this.created_at = currentDate;

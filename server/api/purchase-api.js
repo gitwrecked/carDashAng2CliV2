@@ -1,13 +1,13 @@
-var express  = require('express');
-var jwt      = require('jsonwebtoken');
-var config   = require('../config');
-var Purchase = require('../models/purchase');
+"use strict"; 
 
-var api = express.Router();
-
+const express  = require('express');
+const jwt      = require('jsonwebtoken');
+const config   = require('../config');
+const Purchase = require('../models/purchase');
+const api      = express.Router();
 
 api.use(function(req, res, next) {
-  var token = req.headers.cd_token;
+  const token = req.headers.cd_token;
   if (token) {
     jwt.verify(token, config.server.secret, function(err, decoded) {
       if (err) {
@@ -24,7 +24,7 @@ api.use(function(req, res, next) {
 });
 
 api.post('/', function(req, res) {
-  var purchase = new Purchase({
+  let purchase = new Purchase({
     user: req.body.user,
     amount: req.body.amount,
     description: req.body.description,

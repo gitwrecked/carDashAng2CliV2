@@ -1,7 +1,9 @@
-var mongoose = require('mongoose');
-var bcrypt   = require('bcrypt-nodejs');
+"use strict"; 
 
-var userSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+const bcrypt   = require('bcrypt-nodejs');
+
+let userSchema = new mongoose.Schema({
   email: {type: String, required: true, unique: true},
   password: {type: String, required: true},
   admin: {type: Boolean, default: false},
@@ -22,7 +24,7 @@ userSchema.pre('save', function(next) {
 });
 
 userSchema.pre('save', function(next) {
-  var currentDate = new Date();
+  let currentDate = new Date();
   this.updated_at = currentDate;
   if (!this.created_at) {
     this.created_at = currentDate;
