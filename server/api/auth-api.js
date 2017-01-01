@@ -1,4 +1,4 @@
-"use strict"; 
+'use strict';
 
 const express = require('express');
 const jwt     = require('jsonwebtoken');
@@ -7,9 +7,9 @@ const bcrypt  = require('bcrypt-nodejs');
 const User    = require('../models/user');
 const api     = express.Router();
 
-api.post('/register', function(req, res) {
+api.post('/register', (req, res) => {
   let newUser = new User({email: req.body.email, password: req.body.password});
-  newUser.save(function(err) {
+  newUser.save((err) => {
     if (err) {
       return res.status(401).send(
           {msg: 'A user with that email already exists'});
@@ -26,8 +26,8 @@ api.post('/register', function(req, res) {
   });
 });
 
-api.post('/login', function(req, res) {
-  User.findOne({email: req.body.email}, function(err, user) {
+api.post('/login', (req, res) => {
+  User.findOne({email: req.body.email}, (err, user) => {
     if (err) {
       return res.status(500).send({msg: 'There was an error on login'});
     }

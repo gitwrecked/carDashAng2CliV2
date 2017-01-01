@@ -1,4 +1,4 @@
-"use strict"; 
+'use strict';
 
 const express  = require('express');
 const jwt      = require('jsonwebtoken');
@@ -6,10 +6,10 @@ const config   = require('../config');
 const Purchase = require('../models/purchase');
 const api      = express.Router();
 
-api.use(function(req, res, next) {
+api.use((req, res, next) => {
   const token = req.headers.cd_token;
   if (token) {
-    jwt.verify(token, config.server.secret, function(err, decoded) {
+    jwt.verify(token, config.server.secret, (err, decoded) => {
       if (err) {
         return res.status(400).send({msg: 'Unable to verify token'});
       } else {
@@ -19,11 +19,11 @@ api.use(function(req, res, next) {
     });
   } else {
     return res.status(401).send(
-        {msg: 'You must be logged in to perform this function...'});
+        {msg: 'You must be logged in to perform this ...'});
   }
 });
 
-api.post('/', function(req, res) {
+api.post('/', (req, res) => {
   let purchase = new Purchase({
     user: req.body.user,
     amount: req.body.amount,
@@ -31,7 +31,7 @@ api.post('/', function(req, res) {
     item: req.body.item
   });
 
-  purchase.save(function(err) {
+  purchase.save((err) => {
     if (err) {
       console.error(err);
       return res.status(500).send({msg: 'Failed to add purchase...'});
@@ -42,8 +42,8 @@ api.post('/', function(req, res) {
   });
 });
 
-api.get('/:purchase_id', function(req, res) {
-  Purchase.findById(req.params.purchase_id, function(err, purchase) {
+api.get('/:purchase_id', (req, res) => {
+  Purchase.findById(req.params.purchase_id, (err, purchase) => {
     if (err) {
       console.error(err);
       return res.status(500).send(
@@ -53,8 +53,8 @@ api.get('/:purchase_id', function(req, res) {
   });
 });
 
-api.get('/user/:user', function(req, res) {
-  Purchase.find(req.params.user, function(err, purchases) {
+api.get('/user/:user', (req, res) => {
+  Purchase.find(req.params.user, (err, purchases) => {
     if (err) {
       console.error(err);
       return res.status(500).send(
@@ -64,8 +64,8 @@ api.get('/user/:user', function(req, res) {
   });
 });
 
-api.delete('/:purchase_id', function(req, res) {
-  Purchase.remove({_id: req.params.purchase_id}, function(err, purchase) {
+api.delete('/:purchase_id', (req, res) => {
+  Purchase.remove({_id: req.params.purchase_id}, (err, purchase) => {
     if (err) {
       console.error(err);
       return res.status(500).send(

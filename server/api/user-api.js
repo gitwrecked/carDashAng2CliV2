@@ -1,4 +1,4 @@
-"use strict"; 
+'use strict';
 
 const express = require('express');
 const jwt     = require('jsonwebtoken');
@@ -6,8 +6,8 @@ const config  = require('../config');
 const User    = require('../models/user');
 const api     = express.Router();
 
-api.get('/', function(req, res) {
-  User.find(function(err, users) {
+api.get('/', (req, res) => {
+  User.find((err, users) => {
     if (err) {
       console.error(err);
       return res.status(500).send(
@@ -18,10 +18,10 @@ api.get('/', function(req, res) {
   });
 });
 
-api.use(function(req, res, next) {
+api.use((req, res, next) => {
   const token = req.headers.cd_token;
   if (token) {
-    jwt.verify(token, config.server.secret, function(err, decoded) {
+    jwt.verify(token, config.server.secret, (err, decoded) => {
       if (err) {
         console.log(err);
         return res.status(400).send({msg: 'Unable to verify token'});
@@ -32,12 +32,12 @@ api.use(function(req, res, next) {
     });
   } else {
     return res.status(401).send(
-        {msg: 'You must be logged in to perform this function'});
+        {msg: 'You must be logged in to perform this '});
   }
 });
 
-api.get('/:email', function(req, res) {
-  User.find({email: req.params.email}, function(err, user) {
+api.get('/:email', (req, res) => {
+  User.find({email: req.params.email}, (err, user) => {
     if (err) {
       console.error(err);
       return res.status(500).send(
@@ -48,10 +48,10 @@ api.get('/:email', function(req, res) {
   });
 });
 
-api.post('/', function(req, res) {
+api.post('/', (req, res) => {
   User.update(
       {email: req.body.email}, {$push: {purchases: req.body.purchase}},
-      function(err, numUpdated) {
+      (err, numUpdated) => {
         if (err) {
           console.error(err);
           return res.status(500).send({msg: 'Failed to update user'});
@@ -65,8 +65,8 @@ api.post('/', function(req, res) {
       });
 });
 
-api.put('/:email', function(req, res) {
-  User.update({email: req.params.email}, req.body.user, function(err) {
+api.put('/:email', (req, res) => {
+  User.update({email: req.params.email}, req.body.user, (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send({msg: 'Failed to update user'});
@@ -77,8 +77,8 @@ api.put('/:email', function(req, res) {
   });
 });
 
-api.delete('/:email', function(req, res) {
-  User.findOneAndRemove({email: req.params.email}, {}, function(err) {
+api.delete('/:email', (req, res) => {
+  User.findOneAndRemove({email: req.params.email}, {}, (err) => {
     if (err) {
       console.error(err);
       return res.status(500).send({msg: 'Failed to delete user'});

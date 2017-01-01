@@ -1,4 +1,4 @@
-"use strict"; 
+'use strict';
 
 const mongoose = require('mongoose');
 
@@ -11,7 +11,7 @@ let purchaseSchema = new mongoose.Schema({
   updated_at: Date
 });
 
-purchaseSchema.pre('save', function(next) {
+purchaseSchema.pre('save', (next) => {
   let currentDate = new Date();
   this.updated_at = currentDate;
   if (!this.created_at) {

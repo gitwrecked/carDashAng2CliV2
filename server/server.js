@@ -1,4 +1,4 @@
-"use strict"; 
+'use strict';
 
 require('rootpath')();
 
@@ -25,7 +25,7 @@ app.set('mongo_uri', (process.env.MONGO_URI || config.db.url))
 mongoose.connect(app.get('mongo_uri'));
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo db connection error:'));
-db.once('open', function() {
+db.once('open', () => {
   console.log('mongo db is connected!');
 });
 
@@ -45,7 +45,7 @@ app.use(function(req, res, next) {
 });
 
 app.set('port', port);
-app.listen(app.get('port'), function() {
+app.listen(app.get('port'), () => {
   console.log('Example app listening on port ' + app.get('port'));
 });
 
