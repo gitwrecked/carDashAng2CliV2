@@ -29,10 +29,10 @@ db.once('open', () => {
   console.log('mongo db is connected!');
 });
 
-app.use('/api/v1/auth', require('./api/auth-api'));
-app.use('/api/v1/purchase', require('./api/purchase-api'));
-app.use('/api/v1/user', require('./api/user-api'));
-app.use('/api/v1', require('./swagger-app'));
+app.use('/api/v1/auth', require('./api/auth-api-v1'));
+app.use('/api/v1/purchase', require('./api/purchase-api-v1'));
+app.use('/api/v1/user', require('./api/user-api-v1'));
+app.use('/api/doc', require('./swagger-app'));
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, '/../dist/index.html'));
