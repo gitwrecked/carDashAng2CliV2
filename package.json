@@ -12,7 +12,7 @@
         "heroku-postbuild": "bower install ; ng build",
         "start": "node server/server.js",
         "watch": "ng build --watch",
-        "lint": "tslint \"client/app/**/*.ts\"",
+        "lint": "tslint \"client/src/app/**/*.ts\"",
         "test": "ng test",
         "test-api": "jasmine-node server/api/test/",
         "pree2e": "webdriver-manager update",

@@ -12,11 +12,11 @@ module.exports = function(config) {
             require('angular-cli/plugins/karma')
         ],
         files: [{
-            pattern: './client/test.ts',
+            pattern: './src/test.ts',
             watched: false
         }],
         preprocessors: {
-            './client/test.ts': ['angular-cli']
+            './src/test.ts': ['angular-cli']
         },
         mime: {
             'text/x-typescript': ['ts', 'tsx']

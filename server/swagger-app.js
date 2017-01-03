@@ -21,7 +21,7 @@ swagger.setApiInfo({
 });
 
 swaggerApp.get('/*', function(req, res) {
-  res.sendFile(path.join(__dirname, '/../swagger/index.html'));
+  res.sendFile(path.join(__dirname, './swagger/index.html'));
 });
 
 swagger.configureSwaggerPaths('', 'api-docs', '');

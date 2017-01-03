@@ -8,9 +8,9 @@ gulp.task('default', defaultTasks);
 
 gulp.task('format', function() {
     return gulp.src([
-            'client/app/**/*.scss',
-            'client/app/**/*.ts',
-            'client/index.html',
+            'client/src/app/**/*.scss',
+            'client/src/app/**/*.ts',
+            'client/src/index.html',
             '*.{js,json}'
         ], {
             base: './'

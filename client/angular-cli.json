@@ -4,7 +4,7 @@
         "name": "car-app"
     },
     "apps": [{
-        "root": "client",
+        "root": "src",
         "outDir": "dist",
         "assets": [
             "assets",

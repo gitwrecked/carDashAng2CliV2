@@ -29,16 +29,22 @@ db.once('open', () => {
   console.log('mongo db is connected!');
 });
 
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*")
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+  next()
+});
+
 app.use('/api/v1/auth', require('./api/auth-api'));
 app.use('/api/v1/purchase', require('./api/purchase-api'));
 app.use('/api/v1/user', require('./api/user-api'));
 app.use('/api/v1', require('./swagger-app'));
 
-app.get('/*', function(req, res) {
+app.get('/*', (req, res) => {
   res.sendFile(path.join(__dirname, '/../dist/index.html'));
 });
 
-app.use(function(req, res, next) {
+app.use((req, res, next) => {
   const err  = new Error('Not Found');
   err.status = 404;
   next(err);
@@ -46,7 +52,7 @@ app.use(function(req, res, next) {
 
 app.set('port', port);
 app.listen(app.get('port'), () => {
-  console.log('Example app listening on port ' + app.get('port'));
+  console.log('app listening on port ' + app.get('port'));
 });
 
 module.exports = app;
