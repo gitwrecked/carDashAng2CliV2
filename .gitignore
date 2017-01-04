@@ -42,7 +42,7 @@ nb-configuration.xml
 # --------------------
 # Node Files
 # --------------------
-npm-debug.log
+**/npm-debug.*
 **/node_modules/
 
 # --------------------

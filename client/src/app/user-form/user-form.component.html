@@ -1,33 +1,28 @@
 <h2 id="centerHeading">User Spending </h2>
-  <br>
-  <div class="expense-form">
+<br>
+<div class="expense-form">
     <div>
-      <form #userForm="ngForm">
-        <div class="form-group">
-          <label for="name">User Email</label>
-              <input type="text" class="form-control" id="user"
-                 [(ngModel)]="user" name="user" disabled>
-        </div>
-        <div class="form-group">
-          <label for="amount">Amount</label>
-          <input type="number" class="form-control" id="amount"
-                 [(ngModel)]="purchase.amount" name="amount" >
-        </div>
-         <div class="form-group">
-                  <label for="item">Item</label>
-          <select class="form-control"  id="item"
-                  required
-                  [(ngModel)]="purchase.item" name="item" #item="ngModel">
+        <form #userForm="ngForm">
+            <div class="form-group">
+                <label for="name">User Email</label>
+                <input type="text" class="form-control" id="user" [(ngModel)]="user" name="user" disabled>
+            </div>
+            <div class="form-group">
+                <label for="amount">Amount</label>
+                <input type="number" class="form-control" id="amount" [(ngModel)]="purchase.amount" name="amount">
+            </div>
+            <div class="form-group">
+                <label for="item">Item</label>
+                <select class="form-control" id="item" required [(ngModel)]="purchase.item" name="item" #item="ngModel">
             <option *ngFor="let item of items" [value]="item">{{item}}</option>
           </select>
-        </div> 
-        <div class="form-group">
-          <label for="description">Description</label>
-          <input type="text" class="form-control" id="description"
-                 [(ngModel)]="purchase.description" name="description" >
-        </div>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="purchase.description" name="description">
+            </div>
 
-        <button type="button" class="btn btn-default" (click)="addUserPurchase()"> post</button>
-      </form>
+            <button type="button" class="btn btn-default" (click)="addUserPurchase()"> post</button>
+        </form>
     </div>
-  </div>
+</div>

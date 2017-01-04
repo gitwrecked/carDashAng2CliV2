@@ -1,8 +1,7 @@
 {
     "db": {
         "url": "mongodb://database/test"
-    }
-    ,
+    },
     "server": {
         "listenPort": 3001,
         "securePort": 0,
