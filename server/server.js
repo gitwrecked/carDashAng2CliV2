@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, '/../dist')));
+app.use(express.static(path.join(__dirname, '/dist')));
 app.set('mongo_uri', (process.env.MONGO_URI || config.db.url))
 mongoose.connect(app.get('mongo_uri'));
 const db = mongoose.connection;
@@ -38,10 +38,10 @@ app.use((req, res, next) => {
 app.use('/api/v1/auth', require('./api/auth-api'));
 app.use('/api/v1/purchase', require('./api/purchase-api'));
 app.use('/api/v1/user', require('./api/user-api'));
-app.use('/api/v1', require('./swagger-app'));
+app.use('/api/doc', require('./swagger-app'));
 
 app.get('/*', (req, res) => {
-  res.sendFile(path.join(__dirname, '/../dist/index.html'));
+  res.sendFile(path.join(__dirname, '/dist/index.html'));
 });
 
 app.use((req, res, next) => {

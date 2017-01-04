@@ -5,7 +5,10 @@
   "main": "server.js",
   "scripts": {
     "test": "jasmine-node api/test/",
-    "start": "node server.js"
+    "start": "node server.js",
+    "seed-users": "mongoimport -h localhost:27017 -d test -c users --file seed/users.json",
+    "seed-purchases": "mongoimport -h localhost:27017 -d test -c purchases --file seed/purchases.json",
+    "seed-db": "npm run seed-users && npm run seed-purchases"
   },
   "author": "",
   "license": "ISC",

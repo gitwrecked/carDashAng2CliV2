@@ -43,7 +43,7 @@ nb-configuration.xml
 # Node Files
 # --------------------
 npm-debug.log
-**/node_modules/
+node_modules/
 
 # --------------------
 # SASS Files
@@ -73,6 +73,11 @@ client/uploads
 # Files
 # --------------------
 files/
+
+# --------------------
+# Angular CLI
+# --------------------
+/dist
 
 # --------------------
 # Files

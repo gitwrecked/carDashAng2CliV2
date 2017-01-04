@@ -11,7 +11,9 @@ gulp.task('format', function() {
             'client/src/app/**/*.scss',
             'client/src/app/**/*.ts',
             'client/src/index.html',
-            '*.{js,json}'
+            '!client/node_modules',
+            'server/**/*.{js,json}',
+            '!server/node_modules'
         ], {
             base: './'
         })

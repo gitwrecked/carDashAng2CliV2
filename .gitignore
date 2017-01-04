@@ -83,8 +83,5 @@ files/
 # Webpack
 # --------------------
 /client/dist
-
-# --------------------
-# Bower
-# --------------------
-/client/src/assets
+/server/dist
+/dist
