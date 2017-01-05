@@ -1,0 +1,26 @@
+<h2 id ="centerHeading">User Purchases</h2>
+<div id ="centerDiv">
+ 
+<table class="table table-striped">
+ <thead>
+      <tr>
+        <th>Item</th>
+        <th>Desc</th>
+      </tr>
+</thead><tbody></tbody></table>
+
+<div *ngFor="let user of users" > 
+<div *ngIf="user.purchases.length > 0">
+  
+<h4>{{user.email}}</h4>
+<br>
+<table class="table table-striped">
+     <tbody>
+      <tr *ngFor="let purchase of user.purchases">
+          <td >{{purchase.item}}</td>
+          <td>{{purchase.description}}</td>             
+      </tr>
+  </tbody>
+</table>
+ </div>
+</div>

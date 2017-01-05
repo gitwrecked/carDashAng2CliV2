@@ -1,1 +1,82 @@
-/* You can add global styles to this file, and also import other style files */
+#page-loader {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.blink {
+  animation: blinking 0.7s infinite;
+}
+
+@keyframes blinking {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+li>a:hover {
+  cursor: pointer;
+  color: #fff !important;
+  text-decoration: none;
+}
+
+h1 {
+  	font-size: 30px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: 300;
+  	font-weight: bold;
+  	text-align: center;
+  	color: black;
+  }
+#centerHeading{
+text-align: center;
+}
+    #unhide{
+    	display: none;
+    }
+
+    #error{
+    	display: none;
+    }
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li a {
+    display: block;
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+   @media screen and (orientation: portrait) {
+      .container {
+          margin-left: 10%;
+          margin-right: 10%;
+          margin-top: 15%;
+
+      }
+      h1 {
+  	font-size: 40px;
+  	font-style: normal;
+  	font-variant: normal;
+  	font-weight: bold;
+  	text-align: center;
+  	color: black;
+    }
+  }

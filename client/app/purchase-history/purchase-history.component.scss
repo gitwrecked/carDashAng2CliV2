@@ -1,0 +1,17 @@
+#centerDiv {
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+#centerHeading {
+    text-align: center;
+}
+
+.hidden {
+    visibility: hidden
+}
+
+.table>thead>tr>th,
+.table>tbody>tr>td {
+    width: 50%;
+}

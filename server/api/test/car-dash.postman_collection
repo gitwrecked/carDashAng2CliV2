@@ -1,0 +1,316 @@
+{
+	"variables": [],
+	"info": {
+		"name": "CD project",
+		"_postman_id": "f0f36c70-37ce-4aa3-6872-2ec29428cfca",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "/api/v1/auth/register",
+			"request": {
+				"url": "http://localhost:3001/api/v1/auth/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"arunv4700@gmail.com\",\n\t\"password\":\"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/auth/login",
+			"request": {
+				"url": "http://localhost:3001/api/v1/auth/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"arunv4700@gmail.com\",\n\t\"password\":\"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/user/arunv4700@gmail.com",
+			"request": {
+				"url": "http://localhost:3001/api/v1/user/arunv4700@gmail.com",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MjQzNzE4NSwiZXhwIjoxNDgyNTIzNTg1fQ.d0Nz4o0OXScDnuUy8d5I740-HrKZJBGeUCNmKCqNKvo",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"arunv4700@gmail.com\",\n\t\"password\":\"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/user",
+			"request": {
+				"url": "http://localhost:3001/api/v1/user",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MTY4NTY0MywiZXhwIjoxNDgxNzcyMDQzfQ.8Xm1iUSCxJ8uzuUJMPL6o5nAC7KyUQDXCiU9AxBN4YM",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"arunv4700@gmail.com\",\n\t\"password\":\"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/user",
+			"request": {
+				"url": "http://localhost:3001/api/v1/user",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MjQzNzE4NSwiZXhwIjoxNDgyNTIzNTg1fQ.d0Nz4o0OXScDnuUy8d5I740-HrKZJBGeUCNmKCqNKvo",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"arunv4700@gmail.com\",\n\t\"password\":\"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/user",
+			"request": {
+				"url": "http://localhost:3001/api/v1/user/arunv4700@gmail.com",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MjQzNzE4NSwiZXhwIjoxNDgyNTIzNTg1fQ.d0Nz4o0OXScDnuUy8d5I740-HrKZJBGeUCNmKCqNKvo",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"arunv4700@gmail.com\",\n\t\"password\":\"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/user/arunv4700@gmail.com",
+			"request": {
+				"url": "http://localhost:3001/api/v1/user/arunv4700@gmail.com",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MjQzNzE4NSwiZXhwIjoxNDgyNTIzNTg1fQ.d0Nz4o0OXScDnuUy8d5I740-HrKZJBGeUCNmKCqNKvo",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/purchase",
+			"request": {
+				"url": "http://localhost:3001/api/v1/purchase",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MjI5NTUzMywiZXhwIjoxNDgyMzgxOTMzfQ.iTMYOXsRtygj24Rji0HT65ESRTQlHDFj1H5F4g6rhT0",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"arunv4700@gmail.com\",\n    \"amount\": 100,\n    \"description\": \"expensive item\",\n    \"item\": \"item\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/purchase",
+			"request": {
+				"url": "http://localhost:3001/api/v1/purchase",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"arunv4700@gmail.com\",\n    \"amount\": 11,\n    \"description\": \"description\",\n    \"item\": \"item-1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/purchase/5850bdf228b3972bc9a22049",
+			"request": {
+				"url": "http://localhost:3001/api/v1/purchase/5850bdf228b3972bc9a22049",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MTY4NjY1MSwiZXhwIjoxNDgxNzczMDUxfQ.VKIMtBOeDqe0edygCfPX28XW870EtbEqPWjqGvecBhU",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"arunv4700@gmail.com\",\n    \"amount\": 11,\n    \"description\": \"description\",\n    \"item\": \"item-1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/purchase/5850bdf228b3972bc9a22049",
+			"request": {
+				"url": "http://localhost:3001/api/v1/purchase/5850bdf228b3972bc9a22049",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MTY4NjY1MSwiZXhwIjoxNDgxNzczMDUxfQ.VKIMtBOeDqe0edygCfPX28XW870EtbEqPWjqGvecBhU",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/purchase",
+			"request": {
+				"url": "http://localhost:3001/api/v1/purchase/user/arunv4700@gmail.com",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					},
+					{
+						"key": "cd_token",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjoiYXJ1bnY0NzAwQGdtYWlsLmNvbSIsImlhdCI6MTQ4MTY4NjY1MSwiZXhwIjoxNDgxNzczMDUxfQ.VKIMtBOeDqe0edygCfPX28XW870EtbEqPWjqGvecBhU",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"user\": \"arunv4700@gmail.com\",\n    \"amount\": 11,\n    \"description\": \"description\",\n    \"item\": \"item-1\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "/api/v1/auth/login PROD",
+			"request": {
+				"url": "http://gw-car-dashboard.herokuapp.com/api/v1/auth/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"email\":\"arunv4700@gmail.com\",\n\t\"password\":\"password\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}

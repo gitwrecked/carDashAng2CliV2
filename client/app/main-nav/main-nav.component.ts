@@ -1,32 +1,35 @@
-import { Component, OnInit }	from '@angular/core';
-import { Router }         		from '@angular/router';
-import { SessionService } 		from '../common/session.service';
+import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {SessionService} from '../common/session.service';
+import {MainNavComponentAnimations} from './main-nav.component.animations';
 
-const styles   = require('./main-nav.component.css');
 const template = require('./main-nav.component.html');
+const styles   = require('./main-nav.component.scss');
 
 @Component({
-  selector: 'main-nav',
+  selector: 'app-main-nav',
   templateUrl: template,
   styles: [styles],
-  providers: [SessionService]
+  providers: [SessionService],
+  animations: MainNavComponentAnimations
 })
 
 export class MainNavComponent implements OnInit {
-	constructor(
-		private sessionService: SessionService, 
-		private router: Router) {
-	}
+  public sessionUser = this.sessionService.getSession();
+  nav: string        = 'loading';
 
-    public sessionUser = this.sessionService.getSession();	
+  constructor(private sessionService: SessionService, private router: Router) {}
 
-    ngOnInit():void {
-    	this.sessionUser = this.sessionService.getSession();
-    }
+  ngOnInit(): void {
+    this.sessionUser = this.sessionService.getSession();
+    setTimeout(() => {
+      this.nav = 'loaded';
+    }, 500);
+  }
 
-	logout():void {
-		this.sessionService.logout();
-		this.router.navigate(['/usersInvestments']);
-		window.location.reload();		
-	}
+  logout(): void {
+    this.sessionService.logout();
+    this.router.navigate(['/usersInvestments']);
+    window.location.reload();
+  }
 }

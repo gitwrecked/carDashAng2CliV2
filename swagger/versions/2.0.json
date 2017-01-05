@@ -1,0 +1,320 @@
+{  
+   "swagger":"2.0",
+   "info":{  
+      "version":"2.0",
+      "title":"CarDash API",
+      "description":"API documentation for this app",
+      "termsOfService":"http://swagger.io/terms/"
+   },
+   "basePath":"/",
+   "tags":[  
+      {  
+         "name":"Auth",
+         "description":"CarDash Auth API"
+      },
+      {  
+         "name":"User",
+         "description":"CarDash User API"
+      }
+   ],
+   "schemes":[  
+      "http"
+   ],
+   "consumes":[  
+      "application/json"
+   ],
+   "produces":[  
+      "application/json"
+   ],
+   "paths":{  
+      "/api/v1/auth/register":{  
+         "post":{  
+            "tags":[  
+               "Auth"
+            ],
+            "summary":"Register a user",
+            "description":"Create a new user using email && password",
+            "operationId":"registerUser",
+            "produces":[  
+               "application/json"
+            ],
+            "parameters":[  
+               {  
+                  "name":"user",
+                  "in":"body",
+                  "description":"The user name for login",
+                  "required":true,
+                  "schema":{  
+                     "$ref":"#/definitions/User"
+                  }
+               }
+            ],
+            "responses":{  
+               "201":{  
+                  "description":"Registered user successfully",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "401":{  
+                  "description":"A user with that email already exists"
+               }
+            }
+         }
+      },
+      "/api/v1/auth/login":{  
+         "post":{  
+            "tags":[  
+               "Auth"
+            ],
+            "summary":"Login user",
+            "description":"Login user using email && password",
+            "operationId":"loginUser",
+            "produces":[  
+               "application/json"
+            ],
+            "parameters":[  
+               {  
+                  "name":"email",
+                  "in":"query",
+                  "description":"The user name for login",
+                  "required":true,
+                  "type":"string"
+               },
+               {  
+                  "name":"password",
+                  "in":"query",
+                  "description":"The password for login in clear text",
+                  "required":true,
+                  "type":"string"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Logged in user successfully",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "401":{  
+                  "description":"The email or password do not match"
+               },
+               "500":{  
+                  "description":"There was an error on login"
+               }
+            }
+         }
+      },
+      "/api/v1/user":{  
+         "get":{  
+            "tags":[  
+               "User"
+            ],
+            "summary":"Retrieves a list of all users",
+            "description":"",
+            "operationId":"getAllUsers",
+            "produces":[  
+               "application/json"
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Users retrieved successfully",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "500":{  
+                  "description":"Failed to retrieve users"
+               }
+            }
+         }
+      },
+      "/api/v1/user/{email}":{  
+         "get":{  
+            "tags":[  
+               "User"
+            ],
+            "summary":"Get user by email",
+            "description":"",
+            "operationId":"getUserByEmail",
+            "produces":[  
+               "application/json"
+            ],
+            "parameters":[  
+               {  
+                  "name":"email",
+                  "in":"path",
+                  "description":"Email to use as key to find user",
+                  "required":true,
+                  "type":"string"
+               },
+               {  
+                  "name":"cd_token",
+                  "in":"header",
+                  "description":"JSON webtoken to authenticate request",
+                  "required":true,
+                  "type":"string"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"User retrieved successfully",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "400":{  
+                  "description":"Unable to verify token"
+               },
+               "401":{  
+                  "description":"You must be logged in to perform this function"
+               },
+               "500":{  
+                  "description":"Failed to retrieve user"
+               }
+            },
+            "security":[  
+               {  
+                  "api_key":[  
+
+                  ]
+               }
+            ]
+         },
+         "put":{  
+            "tags":[  
+               "User"
+            ],
+            "summary":"Update user by email",
+            "description":"",
+            "operationId":"updateUserByEmail",
+            "produces":[  
+               "application/json"
+            ],
+            "parameters":[  
+               {  
+                  "name":"email",
+                  "in":"path",
+                  "description":"Key to find user to update",
+                  "required":true,
+                  "type":"string"
+               },
+               {  
+                  "name":"user",
+                  "in":"body",
+                  "description":"Updated user object to write to db",
+                  "required":true,
+                  "schema":{  
+                     "$ref":"#/definitions/User"
+                  }
+               },
+               {  
+                  "name":"cd_token",
+                  "in":"header",
+                  "description":"JSON webtoken to authenticate request",
+                  "required":true,
+                  "type":"string"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"Updated user successfully",
+                  "schema":{  
+                     "type":"string"
+                  }
+               },
+               "400":{  
+                  "description":"Unable to verify token"
+               },
+               "401":{  
+                  "description":"You must be logged in to perform this function"
+               },
+               "500":{  
+                  "description":"Failed to update user"
+               }
+            },
+            "security":[  
+               {  
+                  "api_key":[  
+
+                  ]
+               }
+            ]
+         },
+         "delete":{  
+            "tags":[  
+               "User"
+            ],
+            "summary":"Delete user by email",
+            "description":"",
+            "operationId":"deleteUserByEmail",
+            "produces":[  
+               "application/json"
+            ],
+            "parameters":[  
+               {  
+                  "name":"email",
+                  "in":"path",
+                  "description":"Key to find user to update",
+                  "required":true,
+                  "type":"string"
+               },
+               {  
+                  "name":"cd_token",
+                  "in":"header",
+                  "description":"JSON webtoken to authenticate request",
+                  "required":true,
+                  "type":"string"
+               }
+            ],
+            "responses":{  
+               "200":{  
+                  "description":"User deleted successfully"
+               },
+               "400":{  
+                  "description":"Unable to verify token"
+               },
+               "401":{  
+                  "description":"You must be logged in to perform this function"
+               },
+               "500":{  
+                  "description":"Failed to delete user"
+               }
+            },
+            "security":[  
+               {  
+                  "api_key":[  
+
+                  ]
+               }
+            ]
+         }
+      }
+   },
+   "securityDefinitions":{  
+      "api_key":{  
+         "type":"apiKey",
+         "name":"cd_token",
+         "in":"header"
+      }
+   },
+   "definitions":{  
+      "User":{  
+         "type":"object",
+         "properties":{  
+            "email":{  
+               "type":"string"
+            },
+            "password":{  
+               "type":"string"
+            },
+            "admin":{  
+               "type":"boolean"
+            },
+            "purchases":{  
+               "type":"object"
+            }
+         }
+      }
+   }
+}
