@@ -74,8 +74,3 @@ client/uploads
 # --------------------
 files/
 *sublime*
-
-# --------------------
-# Angular CLI
-# --------------------
-dist/

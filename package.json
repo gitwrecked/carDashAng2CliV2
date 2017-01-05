@@ -8,11 +8,9 @@
         "npm": "3.10.8"
     },
     "scripts": {
-        "heroku-prebuild": "npm install -g angular-cli bower",
-        "heroku-postbuild": "bower install && ng build",
         "client": "cd client && npm start",
         "server": "cd server && npm start",
-        "start": "concurrent \"npm run client\" \"npm run server\"",
+        "start": "concurrently \"npm run client\" \"npm run server\"",
         "format": "gulp format"
     },
     "private": true,

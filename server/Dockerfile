@@ -1,14 +1,14 @@
 FROM node:6
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /server
 
-WORKDIR /usr/src/app
+WORKDIR /server
 
-COPY package.json /usr/src/app
+COPY package.json /server
 
 RUN npm install
 
-COPY . /usr/src/app
+COPY . /server
 
 EXPOSE 3001 
 

@@ -80,13 +80,11 @@ files/
 *sublime*
 
 # --------------------
-# Webpack
-# --------------------
-/client/dist
-/server/dist
-/dist
-
-# --------------------
 # Server Config
 # --------------------
 server/config.json
+
+# --------------------
+# Angular CLI
+# --------------------
+server/dist

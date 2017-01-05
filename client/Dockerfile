@@ -1,13 +1,15 @@
 FROM node:6
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /client
 
-WORKDIR /usr/src/app
+WORKDIR /client
 
-COPY package.json /usr/src/app
+COPY package.json /client
 
 RUN npm install
 
-COPY . /usr/src/app
+COPY . /client
 
-RUN npm run watch
+EXPOSE 4200
+
+CMD ["npm", "start"]
