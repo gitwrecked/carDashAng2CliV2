@@ -9,7 +9,7 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const config = require('./config');
+const config = require('./config') || {};
 const argv = require('minimist')(process.argv.slice(2));
 const app = express();
 
@@ -37,9 +37,9 @@ app.use((req, res, next) => {
     next()
 });
 
-app.use('/api/v1/auth', require('./api/auth-api'));
-app.use('/api/v1/purchase', require('./api/purchase-api'));
-app.use('/api/v1/user', require('./api/user-api'));
+app.use('/api/v1/auth', require('./api/auth-api-v1'));
+app.use('/api/v1/purchase', require('./api/purchase-api-v1'));
+app.use('/api/v1/user', require('./api/user-api-v1'));
 app.use('/api/doc', require('./swagger-app'));
 
 app.get('/*', (req, res) => {

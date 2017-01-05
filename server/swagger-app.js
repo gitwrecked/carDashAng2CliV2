@@ -9,7 +9,7 @@ const swaggerApp = express();
 const swagger = require('swagger-node-express').createNew(swaggerApp);
 const port = process.env.PORT || config.server.listenPort;
 
-swaggerApp.use(express.static(path.join(__dirname, '/swagger')));
+swaggerApp.use(express.static(path.join(__dirname, '/api/doc')));
 
 swagger.setApiInfo({
     title: 'CarDash API',
@@ -21,7 +21,7 @@ swagger.setApiInfo({
 });
 
 swaggerApp.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, './swagger/index.html'));
+    res.sendFile(path.join(__dirname, './api/doc/index.html'));
 });
 
 swagger.configureSwaggerPaths('', 'api-docs', '');

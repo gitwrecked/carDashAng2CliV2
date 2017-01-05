@@ -17,6 +17,7 @@ const styles   = require('./main-nav.component.scss');
 export class MainNavComponent implements OnInit {
   public sessionUser = this.sessionService.getSession();
   nav: string        = 'loading';
+  brand: string        = 'loading';
 
   constructor(private sessionService: SessionService, private router: Router) {}
 
@@ -25,6 +26,10 @@ export class MainNavComponent implements OnInit {
     setTimeout(() => {
       this.nav = 'loaded';
     }, 500);
+
+    setTimeout(() => {
+      this.brand = 'loaded';
+    }, 1200);
   }
 
   logout(): void {
