@@ -10,6 +10,4 @@ RUN npm install
 
 COPY . /usr/src/app
 
-EXPOSE 4200
-
-CMD ["npm", "start"]
+RUN npm run watch

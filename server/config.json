@@ -1,6 +1,6 @@
 {
     "db": {
-        "url": "mongodb://localhost:27017/test"
+        "url": "mongodb://database/test"
     },
     "server": {
         "listenPort": 3001,

@@ -8,6 +8,5 @@ before_script:
 - npm install 
 script: 
 - karma start client/karma.conf.js --single-run
-# - cd client && npm run lint
 notifications:
   slack: gitwrecked:OEXOs5wkTZglJKfqGC7edOau
