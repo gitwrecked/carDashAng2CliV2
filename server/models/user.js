@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt-nodejs');
@@ -24,10 +24,10 @@ let userSchema = new mongoose.Schema({
     updated_at: Date
 });
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next) {
     mongoose.models.User.findOne({
         email: this.email
-    }, (err, user) => {
+    }, function(err, user) {
         if (user) {
             console.log(user);
             next(new Error('user', 'email already in use'));
@@ -37,7 +37,7 @@ userSchema.pre('save', (next) => {
     });
 });
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next) {
     let currentDate = new Date();
     this.updated_at = currentDate;
     if (!this.created_at) {
@@ -46,11 +46,11 @@ userSchema.pre('save', (next) => {
     next();
 });
 
-userSchema.pre('save', (next) => {
+userSchema.pre('save', function(next) {
     this.password = bcrypt.hashSync(this.password);
 
     next();
 });
 
 module.exports =
-    mongoose.model('User', userSchema); // set in module.exports for reuse
+    mongoose.model('User', userSchema);

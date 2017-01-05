@@ -85,3 +85,8 @@ files/
 /client/dist
 /server/dist
 /dist
+
+# --------------------
+# Server Config
+# --------------------
+server/config.json

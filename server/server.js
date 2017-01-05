@@ -13,7 +13,7 @@ const config = require('./config');
 const argv = require('minimist')(process.argv.slice(2));
 const app = express();
 
-const port = process.env.PORT || config.server.listenPort;
+const port = process.env.PORT || config.server.listenPort || 3001;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '/dist')));
-app.set('mongo_uri', (process.env.MONGO_URI || config.db.url))
+app.set('mongo_uri', (process.env.MONGO_URI || config.db.url || "mongodb://localhost:27017/test"))
 mongoose.connect(app.get('mongo_uri'));
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo db connection error:'));
