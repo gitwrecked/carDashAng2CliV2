@@ -1,18 +1,17 @@
-import 'rxjs/add/operator/toPromise';
-
 import {Injectable} from '@angular/core';
 import {Http, RequestOptions} from '@angular/http';
-
 import {headers} from '../common/headers';
 import {Purchase} from '../Models/purchase';
 import {User} from '../Models/user';
+import {AppConfig} from '../common/app.config';
+import 'rxjs/add/operator/toPromise';
 
 @Injectable()
 export class UsersService {
   constructor(private http: Http) {}
 
   getPurchases(): Promise<Purchase[]> {
-    return this.http.get('/api/v1/purchase/')
+    return this.http.get(`${AppConfig.server}/api/v1/purchase/`)
         .toPromise()
         .then(response => {
           return response.json().purchases as Purchase[];
@@ -23,7 +22,7 @@ export class UsersService {
 
   getUsers(): Promise<User[]> {
     let options = new RequestOptions({headers: headers});
-    return this.http.get('/api/v1/user/', options)
+    return this.http.get(`${AppConfig.server}/api/v1/user/`, options)
         .toPromise()
         .then(response => {
           return response.json().users as User[];
@@ -35,8 +34,7 @@ export class UsersService {
   addUserPurchase(email: string, purchase: Purchase): Promise<Purchase> {
     let options = new RequestOptions({headers: headers});
     return this.http
-        .post(
-            '/api/v1/user/', JSON.stringify({email: email, purchase: purchase}),
+        .post(`${AppConfig.server}/api/v1/user/`, JSON.stringify({email: email, purchase: purchase}),
             options)
         .toPromise()
         .then(res => res.json().data)
@@ -44,7 +42,6 @@ export class UsersService {
   };
 
   private handleError(error: any): Promise<any> {
-    console.error('An error occurred', error);
     return Promise.reject(error.message || error);
   }
 }

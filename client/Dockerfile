@@ -1,14 +1,14 @@
 FROM node:6
 
-RUN mkdir -p /client
+RUN mkdir -p /carDash/client
 
-WORKDIR /client
+WORKDIR /carDash/client
 
-COPY package.json /client
+COPY package.json /carDash/client
 
 RUN npm install
 
-COPY . /client
+COPY . /carDash/client
 
 EXPOSE 4200
 

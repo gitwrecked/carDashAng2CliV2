@@ -29,8 +29,8 @@ export class PurchaseHistoryComponent implements OnInit {
         .then(users => {
           this.users = users;
         })
-        .catch(function(e) {
-          console.error(e);
+        .catch(function(err) {
+          console.info("Unable to retrieve user purchases, is CarDash API up and running?");
         });
   }
 }

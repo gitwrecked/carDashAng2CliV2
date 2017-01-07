@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require('./config') || {};
 const argv = require('minimist')(process.argv.slice(2));
+const cors = require('cors')
 const app = express();
 
 const port = process.env.PORT || config.server.listenPort || 3001;
@@ -21,10 +22,8 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-
-app.use(express.static(path.join(__dirname, '/dist')));
-app.set('mongo_uri', (process.env.MONGO_URI || config.db.url || "mongodb://localhost:27017/test"))
-mongoose.connect(app.get('mongo_uri'));
+app.set('MONGO_URI', (process.env.MONGO_URI || config.db.url || "mongodb://localhost:27017/test"))
+mongoose.connect(app.get('MONGO_URI'));
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo db connection error:'));
 db.once('open', () => {
@@ -33,18 +32,23 @@ db.once('open', () => {
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", "*")
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept")
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS')
     next()
 });
+
+var corsOptions = {
+    origin: function(origin, callback) {
+        var isWhitelisted = config.server.whitelist.indexOf(origin) !== -1;
+        callback(null, isWhitelisted);
+    },
+    credentials: true
+}
+app.use(cors(corsOptions));
 
 app.use('/api/v1/auth', require('./api/auth-api-v1'));
 app.use('/api/v1/purchase', require('./api/purchase-api-v1'));
 app.use('/api/v1/user', require('./api/user-api-v1'));
-app.use('/api/doc', require('./swagger-app'));
-
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, '/dist/index.html'));
-});
+app.use('/', require('./swagger-app'));
 
 app.use((req, res, next) => {
     const err = new Error('Not Found');
@@ -52,9 +56,9 @@ app.use((req, res, next) => {
     next(err);
 });
 
-app.set('port', port);
-app.listen(app.get('port'), () => {
-    console.log('app listening on port ' + app.get('port'));
+app.set('PORT', port);
+app.listen(app.get('PORT'), () => {
+    console.log('app listening on port ' + app.get('PORT'));
 });
 
 module.exports = app;

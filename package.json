@@ -9,8 +9,11 @@
     },
     "scripts": {
         "client": "cd client && npm start",
+        "client-dev": "cd client && npm start-dev",
         "server": "cd server && npm start",
+        "server-dev": "cd server && npm run start-dev",
         "start": "concurrently \"npm run client\" \"npm run server\"",
+        "start-dev": "concurrently \"npm run client-dev\" \"npm run server-dev\"",
         "format": "gulp format"
     },
     "private": true,

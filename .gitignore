@@ -80,11 +80,7 @@ files/
 *sublime*
 
 # --------------------
-# Server Config
-# --------------------
-server/config.json
-
-# --------------------
 # Angular CLI
 # --------------------
 server/dist
+client/dist

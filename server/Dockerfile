@@ -1,14 +1,14 @@
 FROM node:6
 
-RUN mkdir -p /server
+RUN mkdir -p /carDash/server
 
-WORKDIR /server
+WORKDIR /carDash/server
 
-COPY package.json /server
+COPY package.json /carDash/server
 
 RUN npm install
 
-COPY . /server
+COPY . /carDash/server
 
 EXPOSE 3001 
 

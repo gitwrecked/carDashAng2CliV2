@@ -26,15 +26,18 @@ export class LoginComponent {
     event.preventDefault();
 
     let data = JSON.stringify({email, password});
-    this.sessionService.login(data).subscribe((res) => {
-      console.log('login: ' + JSON.stringify(res));
-      this.loginMsg = (res.msg);
-      if (res.success) {
-        this.router.navigate(['usersInvestments']);
-        window.location.reload();
-      }
-      this.loading = false;
-    });
+     this.sessionService.login(data)
+        .then(res => {
+          this.loginMsg = (res.msg);
+          if (res.success) {
+            this.router.navigate(['usersInvestments']);
+            window.location.reload();
+          }
+          this.loading = false;
+        })
+        .catch(function(err) {
+          console.info("Unable to login user, is CarDash API up and running?");
+        });
   }
 
   register(event) {

@@ -4,7 +4,8 @@
   "description": "[![Build Status](https://travis-ci.org/gitwrecked/carDashAng2CliV2.svg?branch=master)](https://travis-ci.org/gitwrecked/carDashAng2CliV2)",
   "main": "karma.conf.js",
   "scripts": {
-    "start": "concurrently \"ng build --watch\" \"ng serve -H 0.0.0.0\"",
+    "start": "concurrently \"ng build\" \"ng serve -H 0.0.0.0\"",
+    "start-dev": "concurrently \"ng build --watch\" \"ng serve -H 0.0.0.0\"",
     "watch": "ng build --watch",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",

@@ -6,7 +6,13 @@
         "listenPort": 3001,
         "securePort": 0,
         "secret": "gitwrecked",
-        "tokenExpires": "24h"
+        "tokenExpires": "24h",
+        "whitelist": [
+            "http://localhost:4200",
+            "http://192.168.59.103:4200",
+            "http://www.raptor.site/",
+            "https://gw-car-dashboard.herokuapp.com/"
+        ]
     }
 
 }

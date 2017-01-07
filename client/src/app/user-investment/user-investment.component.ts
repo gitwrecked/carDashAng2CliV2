@@ -57,8 +57,8 @@ export class UserInvestmentComponent implements OnInit {
         .then(purchases => {
           this.purchases = purchases;
         })
-        .catch(function(e) {
-          console.error(e);
+        .catch(function(err) {
+          console.info("Unable to retrieve purchases, is CarDash API up and running?");
         });
   }
 
@@ -70,8 +70,8 @@ export class UserInvestmentComponent implements OnInit {
           this.isLoading = true;
 
         })
-        .catch(function(e) {
-          console.error(e);
+        .catch(function(err) {
+          console.info("Unable to retrieve users, is CarDash API up and running?");
         });
   }
 }

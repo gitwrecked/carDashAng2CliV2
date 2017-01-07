@@ -6,6 +6,7 @@
     "scripts": {
         "test": "jasmine-node api/test/",
         "start": "node server.js",
+        "start-dev": "nodemon server.js",
         "seed-users": "mongoimport -h localhost:27017 -d test -c users --file seed/users.json",
         "seed-purchases": "mongoimport -h localhost:27017 -d test -c purchases --file seed/purchases.json",
         "seed-db": "npm run seed-users && npm run seed-purchases"
@@ -18,6 +19,7 @@
         "body-parser": "1.15.2",
         "cookie-parser": "1.4.3",
         "core-js": "2.4.1",
+        "cors": "2.8.1",
         "express": "4.14.0",
         "jsonwebtoken": "7.2.1",
         "minimist": "1.2.0",
