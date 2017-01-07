@@ -3,11 +3,10 @@
 const express = require('express');
 const path = require('path');
 const bodyParser = require('body-parser');
-const config = require('./config');
+const config = require(`./config/config.${process.env.NODE_ENV || 'development'}`);
 const argv = require('minimist')(process.argv.slice(2));
 const swaggerApp = express();
 const swagger = require('swagger-node-express').createNew(swaggerApp);
-const port = process.env.PORT || config.server.listenPort;
 
 swaggerApp.use(express.static(path.join(__dirname, '/api/doc')));
 
@@ -25,6 +24,6 @@ swaggerApp.get('/*', function(req, res) {
 });
 
 swagger.configureSwaggerPaths('', 'api-docs', '');
-swagger.configure('http://localhost:'.concat(port), '1.0.0');
+swagger.configure('http://localhost:'.concat(process.env.PORT || config.server.listenPort), '1.0.0');
 
 module.exports = swaggerApp;

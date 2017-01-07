@@ -2,7 +2,7 @@
 
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const config = require('../config');
+const config = require(`../config/config.${process.env.NODE_ENV || 'development'}`);
 const Purchase = require('../models/purchase');
 const api = express.Router();
 

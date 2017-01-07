@@ -1,12 +1,20 @@
 version: '2'
 
 services:  
-  angular: 
-    build: client
+  client: 
+    build: 
+      context: ./client
+      dockerfile: client.dockerfile
+    volumes:
+      - /cardash/client     
     ports:
       - "4200:4200" 
-  express: 
-    build: server
+  server: 
+    build: 
+      context: ./server
+      dockerfile: server.dockerfile
+    volumes:
+      - /cardash/server     
     ports:
       - "3001:3001" 
     links:

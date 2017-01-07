@@ -9,12 +9,10 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const config = require('./config') || {};
+const config = require(`./config/config.${process.env.NODE_ENV || 'development'}`);
 const argv = require('minimist')(process.argv.slice(2));
 const cors = require('cors')
 const app = express();
-
-const port = process.env.PORT || config.server.listenPort || 3001;
 
 app.use(logger('dev'));
 app.use(bodyParser.json());
@@ -22,7 +20,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
-app.set('MONGO_URI', (process.env.MONGO_URI || config.db.url || "mongodb://localhost:27017/test"))
+app.set('MONGO_URI', (process.env.MONGO_URI || config.db.url))
 mongoose.connect(app.get('MONGO_URI'));
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'mongo db connection error:'));
@@ -56,7 +54,7 @@ app.use((req, res, next) => {
     next(err);
 });
 
-app.set('PORT', port);
+app.set('PORT', process.env.PORT || config.server.listenPort);
 app.listen(app.get('PORT'), () => {
     console.log('app listening on port ' + app.get('PORT'));
 });
