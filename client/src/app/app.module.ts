@@ -4,7 +4,6 @@ import {HttpModule} from '@angular/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule} from '@angular/router';
 import {ChartsModule} from 'ng2-charts/ng2-charts';
-
 import {AppComponent} from './app.component';
 import {AppRoutes} from './app.routes';
 import {AuthGuard} from './common/auth.guard';
