@@ -32,8 +32,19 @@ Run `ng github-pages:deploy` to deploy to Github Pages.
 
 To get more help on the `angular-cli` use `ng --help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
-## Docker Start
-`docker-compose up --build -d`
+## Docker Start  
+`docker-compose up --build -d`  
 
-## Docker stop
-`docker-compose down`
+## Docker stop  
+`docker-compose down`  
+
+## Update Docker IP in the following places  
+> client/src/app/common/app.config.ts  
+> carDashAng2CliV2/docker-compose.yml  
+> server/config/config.development.json  
+> server/config/config.production.json  
+> server/package.json  
+
+## Seed mongo if necessary  
+`npm run seed-db`  
+
