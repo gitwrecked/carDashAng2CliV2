@@ -9,9 +9,8 @@ services:
     command: npm run start-dev
     environment:
       - SERVER=http://192.168.59.103:3001
-    networks:
-      - front
-      - back
+    ports:
+      - "4200:4200" 
   server: 
     image: node:6
     volumes:
@@ -26,15 +25,7 @@ services:
       - "3001:3001" 
     links:
       - database 
-    networks:
-      - front
   database: 
     image: mongo 
-    networks:      
-      - back
-
-networks:
-    back:
-      driver: bridge
-    front:
-      driver: bridge
+    ports:
+      - "27017:27017"
