@@ -5,7 +5,7 @@ import {User} from '../Models/user';
 import {UsersService} from '../users-service/users.service';
 
 const template = require('./purchase-history.component.html');
-const styles   = require('./purchase-history.component.scss');
+const styles   = require('./purchase-history.component.css');
 
 @Component({
   templateUrl: template,

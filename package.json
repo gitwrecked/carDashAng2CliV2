@@ -10,10 +10,13 @@
     "scripts": {
         "client": "cd client && npm start",
         "client-dev": "cd client && npm start-dev",
+        "test-client":"cd client && npm test",
         "server": "cd server && npm start",
         "server-dev": "cd server && npm run start-dev",
+        "test-server":"cd server && npm test",
         "start": "concurrently \"npm run client\" \"npm run server\"",
         "start-dev": "concurrently \"npm run client-dev\" \"npm run server-dev\"",
+        "test":"concurrently \"npm run test-client\" \"npm run test-server\"",
         "format": "gulp format"
     },
     "private": true,

@@ -1,0 +1,19 @@
+.navbar-brand img {
+    width: 3em;
+    margin-top: -1em;
+}
+
+.navbar-collapse .nav {
+    background: #f8f8f8;
+}
+
+.navbar-collapse .nav li a {
+    cursor: pointer;
+    text-decoration: none;
+    transition: .4s ease-in-out;
+}
+
+.navbar-collapse .nav li a:hover {
+    color: #111 !important;
+    transform: scale(1.03);
+}

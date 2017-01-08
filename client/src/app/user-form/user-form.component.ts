@@ -6,7 +6,7 @@ import {Purchase} from '../Models/purchase';
 import {UsersService} from '../users-service/users.service';
 
 const template = require('./user-form.component.html');
-const styles   = require('./user-form.component.scss');
+const styles   = require('./user-form.component.css');
 
 @Component({
   selector: 'app-user-form',

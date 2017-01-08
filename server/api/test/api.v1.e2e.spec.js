@@ -1,7 +1,7 @@
 'use strict';
 
 const frisby    = require('frisby');
-const server    = 'http://localhost:';
+const server    = 'http://192.168.59.103:';
 const port      = '3001';
 const testEmail = new Date().getMilliseconds().toString().concat('@email.com');
 

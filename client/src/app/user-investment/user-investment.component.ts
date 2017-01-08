@@ -6,7 +6,7 @@ import {User} from '../Models/user';
 import {UsersService} from '../users-service/users.service';
 
 const template = require('./user-investment.component.html');
-const styles   = require('./user-investment.component.scss');
+const styles   = require('./user-investment.component.css');
 
 @Component({
   selector: 'app-user-investment',

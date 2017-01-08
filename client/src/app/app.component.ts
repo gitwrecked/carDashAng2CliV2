@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {AppComponentAnimations} from './app.component.animations';
 
 const template = require('./app.component.html');
-const styles   = require('./app.component.scss');
+const styles   = require('./app.component.css');
 
 @Component({
   selector: 'app-root',

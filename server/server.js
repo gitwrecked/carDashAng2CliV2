@@ -11,7 +11,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const config = require(`./config/config.${process.env.NODE_ENV || 'development'}`);
 const argv = require('minimist')(process.argv.slice(2));
-const cors = require('cors')
+const cors = require('cors');
 const app = express();
 
 app.use(logger('dev'));
@@ -20,6 +20,7 @@ app.use(bodyParser.urlencoded({
     extended: false
 }));
 app.use(cookieParser());
+
 app.set('MONGO_URI', (process.env.MONGO_URI || config.db.url))
 mongoose.connect(app.get('MONGO_URI'));
 const db = mongoose.connection;

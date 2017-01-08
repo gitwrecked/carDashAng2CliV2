@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {SessionService} from '../common/session.service';
 
 const template = require('./login.component.html');
-const styles   = require('./login.component.scss');
+const styles   = require('./login.component.css');
 
 @Component({
   selector: 'app-login',

@@ -4,7 +4,7 @@ import {SessionService} from '../common/session.service';
 import {MainNavComponentAnimations} from './main-nav.component.animations';
 
 const template = require('./main-nav.component.html');
-const styles   = require('./main-nav.component.scss');
+const styles   = require('./main-nav.component.css');
 
 @Component({
   selector: 'app-main-nav',
