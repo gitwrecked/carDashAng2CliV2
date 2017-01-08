@@ -8,7 +8,7 @@ services:
     working_dir: /cardash/client/
     command: npm run start-dev
     environment:
-      - SERVER=http://192.168.59.103:3001
+      - SERVER=http://localhost:3001
     ports:
       - "4200:4200" 
   server: 

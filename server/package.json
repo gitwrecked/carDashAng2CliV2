@@ -9,8 +9,8 @@
         "prestart-dev": "npm install",
         "start": "node server.js",
         "start-dev": "nodemon server.js",
-        "seed-users": "mongoimport -h 192.168.59.103:27017 -d test -c users --file seed/users.json",
-        "seed-purchases": "mongoimport -h 192.168.59.103:27017 -d test -c purchases --file seed/purchases.json",
+        "seed-users": "mongoimport -h localhost:27017 -d test -c users --file seed/users.json",
+        "seed-purchases": "mongoimport -h localhost:27017 -d test -c purchases --file seed/purchases.json",
         "seed-db": "npm run seed-users && npm run seed-purchases"
     },
     "author": "",

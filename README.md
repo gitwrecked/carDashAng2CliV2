@@ -39,12 +39,13 @@ To get more help on the `angular-cli` use `ng --help` or go check out the [Angul
 `docker-compose down`  
 
 ## Update Docker IP in the following places  
-> client/src/app/common/app.config.ts  
-> carDashAng2CliV2/docker-compose.yml  
-> server/config/config.development.json  
-> server/config/config.production.json  
-> server/package.json  
+Port Forwarding:  
+boot2docker ssh  
+VBoxManage controlvm "boot2docker-vm" natpf1 "tcp-port3001,tcp,,3001,,3001";  
+VBoxManage controlvm "boot2docker-vm" natpf1 "tcp-port4200,tcp,,4200,,4200";    
 
 ## Seed mongo if necessary  
+`echo $DOCKER_HOST`  
+Update server/package.json seed scripts with docker-machine ip  
 `npm run seed-db`  
 
