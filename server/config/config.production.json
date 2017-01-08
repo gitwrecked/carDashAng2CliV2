@@ -9,6 +9,7 @@
         "tokenExpires": "24h",
         "whitelist": [
             "http://localhost:4200",
+            "http://localhost:4201",
             "http://192.168.59.103:4200",
             "http://www.raptor.site/",
             "https://gw-car-dashboard.herokuapp.com/"

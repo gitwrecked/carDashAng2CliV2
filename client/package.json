@@ -6,8 +6,10 @@
   "scripts": {
     "prestart":"npm install",
     "prestart-dev":"npm install",
-    "start": "concurrently \"ng build\" \"ng serve -H 0.0.0.0\"",
-    "start-dev": "concurrently \"ng build --watch\" \"ng serve -H 0.0.0.0\"",
+    "preclient-docker":"npm install",
+    "start": "concurrently \"ng build\" \"ng serve --port 4201\"",    
+    "start-dev": "concurrently \"ng build --watch\" \"ng serve --port 4201\"",
+    "client-docker":"concurrently \"ng build\" \"ng serve -H 0.0.0.0\"",
     "watch": "ng build --watch",
     "pree2e": "webdriver-manager update",
     "e2e": "protractor",
