@@ -6,6 +6,7 @@
       <tr>
         <th>Item</th>
         <th>Desc</th>
+        <th>Amount</th>
       </tr>
 </thead><tbody></tbody></table>
 
@@ -18,7 +19,8 @@
      <tbody>
       <tr *ngFor="let purchase of user.purchases">
           <td >{{purchase.item}}</td>
-          <td>{{purchase.description}}</td>             
+          <td>{{purchase.description}}</td>
+          <td>{{purchase.amount}}</td> 
       </tr>
   </tbody>
 </table>
