@@ -43,7 +43,7 @@
         "express": "4.14.0",
         "jsonwebtoken": "7.2.1",
         "mongodb": "2.2.11",
-        "mongoose": "4.7.0",
+        "mongoose": "5.8.9",
         "morgan": "1.7.0",
         "ng2-charts": "1.4.1",
         "rootpath": "0.1.2",
